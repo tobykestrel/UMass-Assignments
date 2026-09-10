@@ -1,26 +1,20 @@
-/*
-Toby Hansen
-Sep 10 2026
-CSC220 Lec2
-*/
-
-// CUSTOM filter function, remove items in an array that do not conform.
-function customFilter<T>(values: T[], mask: (value: T) => boolean): T[]  {
-    const result: T[] = [];
-    for (const val  of values) {
-        if (mask(val)) result.push(val);
+class Thingy {
+    spam: number;
+    egg: number;
+    constructor() {
+        this.spam = 42;
+        this.egg = 43;
     }
-    return result;
 }
 
-// Returns bool of whether a string is lowercase only.
-function isNotLowercaseOnly(word: string) {
-    return !(word == word.toLowerCase());
+const thing1 = new Thingy();
+// console.log(thing1.randomblah);              // ERROR
+// console.log(thing1.randomblah.randomblah2);  // ERROR
+// console.log(thing1.randomblah + 1);          // ERROR
+
+
+function returnString() { return "test";}
+
+function syntaxOfTypescript() {
+    let foo: string | null = returnString();
 }
-
-// Program test for custom filter.
-const wordsWithOnlyLower = ["ABC", "abc", "Abc"];
-const wordsWithoutOnlyLower = customFilter(wordsWithOnlyLower, isNotLowercaseOnly);
-console.log(`Array with mixedcase words             : ${wordsWithOnlyLower}`);
-console.log(`Array with lowercase-only words removed: ${wordsWithoutOnlyLower}`);
-
