@@ -1,28 +1,27 @@
 // Exercise 1: Type Signatures
 
-/*
-Part (a): Fill in the type signatures for f and g.
-  
-const a = [1,2,3,4];
-const b = a.filter(f);
-const c = b.map(g);
+/*Part (a): Fill in the type signatures for f and g.*/
 
-f(x: ____): ____
-g(x: ____): ____
+// const a = [1,2,3,4];
+// const b = a.filter(f);
+// const c = b.map(g);
+
+/*
+f(x: number): boolean
+g(x: number): number
 */
 
-/*
-Part (b): Initialize a, f, and g such that h runs without errors.
+/*Part (b): Initialize a, f, and g such that h runs without errors.
 The input and output types of f should be different from each other.
-You may uncomment the code to test your implementation.
-*/
+You may uncomment the code to test your implementation.*/
 
-// const a = ____;
-// const f = ____;
-// const g = ____;
+const a = [0, 1, 2, 3, 4];
+const f = (n: number): number => n + 1;
+const g = (n: number): boolean => n > 1;
 
-// const h = (a, f, g) => a.map(f).filter(g);
-// h(a, f, g);
+const h = (a: number[], f: (n: number) => number, g: (n: number) => boolean) => a.map(f).filter(g);
+const b = h(a, f, g);
+console.log(b);
 
 // Exercise 2: Testing with Jest
 
