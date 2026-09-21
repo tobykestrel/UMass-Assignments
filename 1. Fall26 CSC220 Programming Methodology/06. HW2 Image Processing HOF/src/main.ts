@@ -6,7 +6,7 @@ import {
   isGrayish,
   makeGrayish,
   pixelBlur,
-  imageBlur
+  imageBlur,
 } from "./imageProcessingHOF.js";
 
 const art = Image.loadImageFromGallery("art");

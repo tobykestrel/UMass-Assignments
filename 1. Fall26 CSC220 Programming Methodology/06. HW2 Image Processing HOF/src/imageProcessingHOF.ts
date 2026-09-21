@@ -5,7 +5,7 @@ export function imageMapCoord(img: Image, func: (img: Image, x: number, y: numbe
   const newImage = img.copy();
   for (let i = 0; i < img.width; i++) {
     for (let j = 0; j < img.height; j++) {
-      newImage.setPixel(i,j, func(img, i, j));
+      newImage.setPixel(i, j, func(img, i, j));
     }
   }
   return newImage;
@@ -18,9 +18,10 @@ export function imageMapIf(
 ): Image {
   // TODO
   return imageMapCoord(img, (img, x, y) => {
-    const p = img.getPixel(x,y);
-    if (cond(img, x, y)) { return func(p); }
-    else return p;
+    const p = img.getPixel(x, y);
+    if (cond(img, x, y)) {
+      return func(p);
+    } else return p;
   });
 }
 
@@ -31,13 +32,12 @@ export function mapWindow(
   func: (p: Color) => Color
 ): Image {
   // TODO
+  if (xInterval[0] >= xInterval[1] || yInterval[0] >= yInterval[1]) {
+    return img.copy();
+  }
   return imageMapIf(
-    img, 
-    (img, x, y) => (
-      x <= xInterval[1] && 
-      x >= xInterval[0] && 
-      y <= yInterval[1] && 
-      y >= yInterval[0]), 
+    img,
+    (img, x, y) => x <= xInterval[1] && x >= xInterval[0] && y <= yInterval[1] && y >= yInterval[0],
     func
   );
 }
@@ -46,16 +46,16 @@ export function isGrayish(p: Color): boolean {
   // TODO
   const maxChannelValue = Math.max(p[0], p[1], p[2]);
   const minChannelValue = Math.min(p[0], p[1], p[2]);
-  return ((maxChannelValue-minChannelValue) <= 85);
+  return maxChannelValue - minChannelValue <= 85;
 }
 
 export function makeGrayish(img: Image): Image {
   // TODO
   return imageMapIf(
-    img, 
-    (img, x, y) => !isGrayish(img.getPixel(x,y)), 
-    (p) => {
-      const avgChannelValue = Math.trunc((p[0] + p[1] + p[2])/3);
+    img,
+    (img, x, y) => !isGrayish(img.getPixel(x, y)),
+    p => {
+      const avgChannelValue = Math.trunc((p[0] + p[1] + p[2]) / 3);
       return [avgChannelValue, avgChannelValue, avgChannelValue];
     }
   );
@@ -63,11 +63,7 @@ export function makeGrayish(img: Image): Image {
 
 export function pixelBlur(img: Image, x: number, y: number): Color {
   // TODO
-  return [
-    pxBlurAvg(img,x,y,0), 
-    pxBlurAvg(img,x,y,1), 
-    pxBlurAvg(img,x,y,2)
-  ];
+  return [pxBlurAvg(img, x, y, 0), pxBlurAvg(img, x, y, 1), pxBlurAvg(img, x, y, 2)];
 }
 
 export function pxBlurAvg(img: Image, x: number, y: number, chnl: number): number {
@@ -75,19 +71,16 @@ export function pxBlurAvg(img: Image, x: number, y: number, chnl: number): numbe
   let pixelsCount = 0;
   for (let i = -1; i <= 1; i++) {
     for (let j = -1; j <= 1; j++) {
-      if (x+i < img.width && x+i >= 0 && y+j < img.height && y+j >= 0) {
-        pixelBlurTotal += img.getPixel(x+i,y+j)[chnl];
+      if (x + i < img.width && x + i >= 0 && y + j < img.height && y + j >= 0) {
+        pixelBlurTotal += img.getPixel(x + i, y + j)[chnl];
         pixelsCount++;
       }
     }
   }
-  return Math.trunc((pixelBlurTotal/pixelsCount));
+  return Math.trunc(pixelBlurTotal / pixelsCount);
 }
 
 export function imageBlur(img: Image): Image {
   // TODO
-  return imageMapCoord(
-    img, 
-    (img, x, y) => pixelBlur(img, x, y)
-  );
+  return imageMapCoord(img, (img, x, y) => pixelBlur(img, x, y));
 }
