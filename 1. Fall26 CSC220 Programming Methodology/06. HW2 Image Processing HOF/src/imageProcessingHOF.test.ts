@@ -93,20 +93,19 @@ describe("mapWindow", () => {
 
   it("should transform everything in the inclusive window", () => {
     const input = Image.create(4, 4, [10, 20, 30]);
-
-    const output = mapWindow(
-      input,
-      [1, 2],
-      [1, 2],
-      p => [p[0] + 10, p[1] + 10, p[2] + 10]
-    );
-
+    const output = mapWindow(input, [1, 2], [1, 2], p => [p[0]+10, p[1]+10, p[2]+10]);
     expectColorToBeCloseTo(output.getPixel(1, 1), [20, 30, 40]);
     expectColorToBeCloseTo(output.getPixel(2, 1), [20, 30, 40]);
     expectColorToBeCloseTo(output.getPixel(1, 2), [20, 30, 40]);
     expectColorToBeCloseTo(output.getPixel(2, 2), [20, 30, 40]);
+  });
 
+  it("shouldn't transform anything outside the inclusive window", () => {
+    const input = Image.create(4, 4, [10, 20, 30]);
+    const output = mapWindow(input, [1, 2], [1, 2], p => [p[0]+10, p[1]+10, p[2]+10]);
     expectColorToBeCloseTo(output.getPixel(0, 0), [10, 20, 30]);
+    expectColorToBeCloseTo(output.getPixel(0, 3), [10, 20, 30]);
+    expectColorToBeCloseTo(output.getPixel(3, 0), [10, 20, 30]);
     expectColorToBeCloseTo(output.getPixel(3, 3), [10, 20, 30]);
   });
 
@@ -114,8 +113,23 @@ describe("mapWindow", () => {
 });
 
 describe("isGrayish", () => {
-  // More tests for isGrayish go here
-});
+  it("should say no if the max/min difference is more than 85", () => {
+    expect(isGrayish([0, 86, 0])).toBe(false);
+    expect(isGrayish([86, 0, 0])).toBe(false);
+  });
+
+  it("should say yes if the max/min difference is 85 or less", () => {
+    expect(isGrayish([100, 100, 100])).toBe(true);
+    expect(isGrayish([0, 85, 0])).toBe(true);
+    expect(isGrayish([85, 0, 0])).toBe(true);
+  });
+
+  it("should be independent of channel order", () => {
+    expect(isGrayish([10, 50, 30])).toBe(true);
+    expect(isGrayish([30, 50, 10])).toBe(true);
+  });
+    // More tests for isGrayish go here
+  });
 
 describe("makeGrayish", () => {
 
@@ -125,6 +139,19 @@ describe("makeGrayish", () => {
     assert(input !== output);
   });
   
+  it("should leave grayish pixels unchanged", () => {
+    const input = Image.create(3, 3, [0,86,0]);
+    input.setPixel(1, 1, [0,85,0]);
+    const output = makeGrayish(input);
+    expectColorToBeCloseTo(output.getPixel(1, 1), [0, 85, 0]);
+  });
+  
+  it("should average out non-grayish pixels", () => {
+    const input = Image.create(3, 3, [0,85,0]);
+    input.setPixel(1, 1, [0,90,0]);
+    const output = makeGrayish(input);
+    expectColorToBeCloseTo(output.getPixel(1, 1), [30, 30, 30]);
+  });
   // More tests for makeGrayish go here
 });
 
