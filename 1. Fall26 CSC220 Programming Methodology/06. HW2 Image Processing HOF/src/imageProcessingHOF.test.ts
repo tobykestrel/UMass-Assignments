@@ -50,6 +50,23 @@ describe("imageMapCoord", () => {
     }
   });
 
+  it("should process every pixel of an image where width != height", () => {
+    const input = Image.create(2, 3, COLORS.BLACK);
+    const output = imageMapCoord(input, (img, x, y) => [x + 1, y + 2, x + y]);
+    expect(output.getPixel(0, 2)).toEqual([1, 4, 2]);
+    expect(output.getPixel(1, 2)).toEqual([2, 4, 3]);
+  });
+
+  it("should give the callback the original image", () => {
+    const input = Image.create(2, 1, [10, 20, 30]);
+    const output = imageMapCoord(input, (img, x, y) => {
+      const pixel = img.getPixel(x, y);
+      return [pixel[0] + 1, pixel[1], pixel[2]];
+    });
+    expect(output.getPixel(0, 0)).toEqual([11, 20, 30]);
+    expect(output.getPixel(1, 0)).toEqual([11, 20, 30]);
+  });
+
   // More tests for imageMapCoord go here.
 });
 
@@ -75,6 +92,18 @@ describe("imageMapIf", () => {
         expectColorToBeCloseTo(output.getPixel(i, j), COLORS.RED);
       }
     }
+  });
+
+  it("should leave pixels alone when the condition is false", () => {
+    const input = Image.create(2, 2, COLORS.WHITE);
+    input.setPixel(0, 0, COLORS.BLACK);
+    const output = imageMapIf(
+      input,
+      (img, x, y) => x == 0 && y == 0,
+      () => COLORS.RED
+    );
+    expect(output.getPixel(0, 0)).toEqual(COLORS.RED);
+    expect(output.getPixel(1, 1)).toEqual(COLORS.WHITE);
   });
 
   // More tests for imageMapIf go here
@@ -111,6 +140,12 @@ describe("mapWindow", () => {
     const output2 = mapWindow(input, [1, 2], [2, 1], p => [67, p[1] + 67, 67]);
     expectColorToBeCloseTo(output1.getPixel(0, 0), [1, 2, 3]);
     expectColorToBeCloseTo(output2.getPixel(0, 0), [1, 2, 3]);
+  });
+
+  it("should return a copy when a window endpoint is repeated", () => {
+    const input = Image.create(3, 3, [1, 2, 3]);
+    const output = mapWindow(input, [1, 1], [0, 2], () => [67, 67, 67]);
+    expect(output.getPixel(1, 1)).toEqual([1, 2, 3]);
   });
 
   it("should return a copy of the image if a window is out of bounds", () => {
@@ -170,6 +205,12 @@ describe("makeGrayish", () => {
     const output = makeGrayish(input);
     expectColorToBeCloseTo(output.getPixel(1, 1), [30, 30, 30]);
   });
+
+  it("should truncate non-integer averages", () => {
+    const input = Image.create(1, 1, [0, 0, 88]);
+    const output = makeGrayish(input);
+    expect(output.getPixel(0, 0)).toEqual([29, 29, 29]);
+  });
   // More tests for makeGrayish go here
 });
 
@@ -206,6 +247,12 @@ describe("pxBlurAvg", () => {
     expect(pxBlurAvg(img, 0, 0, 2)).toBe(2); // (1+2+3+2)/4 = 2
   });
 
+  it("should truncate a non-integer channel average", () => {
+    const img = Image.create(2, 2, [0, 0, 0]);
+    img.setPixel(1, 0, [5, 0, 0]);
+    expect(pxBlurAvg(img, 0, 0, 0)).toBe(1);
+  });
+
   // More tests for pxBlurAvg go here
 });
 
@@ -229,6 +276,14 @@ describe("imageBlur", () => {
     expect(output.getPixel(2, 0)).not.toEqual([255, 0, 0]);
     expect(output.getPixel(2, 1)).not.toEqual([255, 0, 0]);
     expect(output.getPixel(2, 2)).not.toEqual([255, 0, 0]);
+  });
+
+  it("should blur each pixel using the values of the original image", () => {
+    const input = Image.create(2, 1, [0, 0, 0]);
+    input.setPixel(1, 0, [255, 0, 0]);
+    const output = imageBlur(input);
+    expect(output.getPixel(0, 0)).toEqual([127, 0, 0]);
+    expect(output.getPixel(1, 0)).toEqual([127, 0, 0]);
   });
 
   // More tests for imageBlur go here
