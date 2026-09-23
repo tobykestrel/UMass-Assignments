@@ -16,6 +16,13 @@ thing.spam.filter(x => x < 5);
 
 // Exercise 2: Closures
 export function factorialSum(): () => number {
-  // TODO: Implement this function
-  return () => 0;
+  let n = 1;
+  let factorial = 1;
+  let sum = 0;
+
+  return () => {
+    factorial *= n++;
+    sum += factorial;
+    return sum;
+  };
 }
