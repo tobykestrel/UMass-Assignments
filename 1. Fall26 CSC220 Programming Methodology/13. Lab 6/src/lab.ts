@@ -22,6 +22,26 @@ function randomPositiveInteger() {
 
 export function oracle(genArray: (num: number) => number[][]) {
   // TODO: Implement property-based tests for genArray.
+  const N = Math.min(randomPositiveInteger(), 3);
+  const arr = genArray(N);
+  assert(arr.length == N, "Ensure N rows");
+  assert(arr.length == arr[0].length, "Ensure square matrix");
+  for (let i = 0; i < arr.length; i++) {
+    const uniqueRowValues: number[] = [];
+    for (let j = 0; j < N; j++) {
+      const value = arr[i][j];
+      assert(value >= 0 && value < N, "Ensure values are in range");
+      assert(!uniqueRowValues.includes(value), "Ensure row values are unique");
+      uniqueRowValues.push(value);
+    }
+    const uniqueColValues: number[] = [];
+    for (let j = 0; j < N; j++) {
+      const value = arr[j][i];
+      assert(value >= 0 && value < N, "Ensure values are in range");
+      assert(!uniqueColValues.includes(value), "Ensure column values are unique");
+      uniqueColValues.push(value);
+    }
+  }
 }
 
 /**
@@ -38,17 +58,47 @@ export function oracle(genArray: (num: number) => number[][]) {
 
 export class AlternatingIterator<T> implements IterableIterator<T> {
   // TODO: Declare necessary fields.
-
+  private firstIterator: Iterator<T>;
+  private secondIterator: Iterator<T>;
+  private firstDone: boolean;
+  private secondDone: boolean;
+  private firstsTurn: boolean;
   constructor(a: Iterable<T>, b: Iterable<T>) {
     // TODO: Initialize state.
+    this.firstIterator = a[Symbol.iterator]();
+    this.secondIterator = b[Symbol.iterator]();
+    this.firstDone = false;
+    this.secondDone = false;
+    this.firstsTurn = true;
   }
 
   next(): IteratorResult<T> {
     // TODO: Execute iteration logic.
-    throw new Error("Not implemented");
+    if (this.firstsTurn && !this.firstDone) {
+      const result = this.firstIterator.next();
+      this.firstsTurn = false;
+      if (result.done) {
+        this.firstDone = true;
+        return this.secondIterator.next();
+      }
+      return result;
+    } else if (!this.firstsTurn && !this.secondDone) {
+      const result = this.secondIterator.next();
+      this.firstsTurn = true;
+      if (result.done) {
+        this.secondDone = true;
+        return this.firstIterator.next();
+      }
+      return result;
+    } else {
+      return { done: true, value: undefined };
+    }
   }
 
   // TODO: Finish implementing the IterableIterator interface.
+  [Symbol.iterator](): IterableIterator<T> {
+    return this;
+  }
 }
 
 // After implementing the class, uncomment either example and run npm run start.
@@ -59,7 +109,7 @@ export class AlternatingIterator<T> implements IterableIterator<T> {
 // Keep calling next() to get 2, 20, 3, 30, 40, then { done: true, value: undefined }.
 
 // Using for...of to visit every value:
-// for (const value of new AlternatingIterator([1, 2, 3], [10, 20, 30, 40])) {
-//   console.log(value);
-// }
-// Expected output: 1, 10, 2, 20, 3, 30, 40.
+for (const value of new AlternatingIterator([1, 2, 3], [10, 20, 30, 40])) {
+  console.log(value);
+}
+//Expected output: 1, 10, 2, 20, 3, 30, 40.
