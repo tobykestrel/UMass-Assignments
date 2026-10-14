@@ -1,0 +1,580 @@
+
+
+\documentclass[12pt]{article}         
+\usepackage{fullpage}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\newenvironment{myproof}[1][Proof]{%
+  \par\noindent\textbf{#1.}\quad % Custom label, default "Proof"
+  \begingroup
+}{%
+  \hfill\qedsymbol % Put black square at end
+  \par
+  \endgroup
+}
+ 
+
+\title{250 Homework $\#$1 (Fall  2026)}
+\author{FirstName LastName \footnote{Collaborated with Nobody.}}
+%\author{Solution Sketches\footnote{Collaborated with Nobody.}}
+\begin{document}
+\date{}
+\maketitle
+This assignment is due at 11:59 p.m. on Friday 25 September 2026, to 
+be submitted on Gradescope.  Late assignments (with penalty, unless
+excused) will be accepted until
+11:59 p.m. on Saturday 26 September 2026, and not after.  Please see
+the syllabus for more details on homework grading and late penalties.
+
+\medskip
+
+When submitting to Gradescope, please do not forget to assign pages to problems.
+
+\medskip
+
+All problems, with the exception of the first two,  originally come from the textbook. Some of them have been modified.  In case of doubt, the version printed here is the one you should follow.
+
+\bigskip
+
+
+
+The main Canvas Homework page gives detailed submission guidelines, split into 6 major areas, listed below.  Please see the Canvas Homework page for the complete  guideline details.
+
+
+
+
+\begin{enumerate}
+\item {\bf Proper page formatting.}
+(Use of Latex is recommended).
+\item {\bf Proper proof writing and formatting.}\\
+Proofs are marked on understandability, as well as correctness.
+\item {\bf Only use notation taught in class.}
+\item {\bf Use specified  proof structures. }
+\item {\bf Properly declare collaborations and resources used.}\\
+Fill out the brief individual form for each question.\\
+This will be available as a survey on Canvas.
+\item {\bf Proper Use of LLMs.}
+\end{enumerate}
+
+Solutions that do not follow guidelines  1-4 will not be marked.
+For the first two assignments, such submissions will be returned for rewriting and resubmission. In later assignments  points will be deducted for solutions not following guidelines 1 and  2;   solutions not following 3 and 4 will not be marked.
+Questions that do not have their seperate acknowledgment form (guidelines 5 and 6) completed on gradescope will not be marked.
+
+
+
+
+
+See the Canvas Homework web page for detailed instructions on how to format solutions.  Solutions that do not follow those formatting instructions  will be returned for rewriting and resubmission. In later assignments there will be points deducted for such formatting errors.  
+
+\newpage
+
+\section*{\textbf{Problem 1} [10 pts]}
+
+Prove the correctness of (a), (b) and (c) using  equational sequence proofs and not using a truth table. See the comments after (c) for instructions on how to format the proofs.
+
+
+\begin{enumerate}[(a)]
+    
+\item
+Prove $(x\leftrightarrow y) \leftrightarrow (\neg x \leftrightarrow \neg y)$
+
+{\em \small Note/Hint: This is a warm up problem. Start with the definition of  $\leftrightarrow$ given in E1(b) and then use E3(a), the contrapositive rule, twice, then the commutative rule, then E1(b) again.
+}
+
+
+\item Prove $(p \wedge (p \oplus q))\leftrightarrow (p \wedge \neg q)$ using an equational sequence proof.
+\item Prove 
+$\Bigl( ( p \rightarrow r) \wedge (q \rightarrow r)\Bigr) \leftrightarrow  \left( (p \vee q)\rightarrow r \right)$ using an equational sequence proof.
+
+
+\end{enumerate}
+
+
+\hrule
+
+\bigskip
+
+For each part,  the proof structure should be the same as in part 2 of the {\em Equational and Deductive Sequence Proofs Study Guide.} That is, each line should provide a justification as to how it was derived from the previous one(s).
+
+{\bf The justifications should only be rules listed in the study guide.}
+
+
+
+Proofs not following this structure will be ignored and marked incorrect.
+
+
+A hint for part (c)  is to start by using the definition of $\rightarrow$ given in E1 in the study guide.
+
+
+\bigskip
+
+Further Restrictions on how the solution must be formatted.
+\begin{itemize}
+\item Each line may reference only ONE justification rule (although that rule may be applied multiple independent times to different parts of one line).
+\item EVERYTHING must be proven.  For example, this would not be  a correct proof line:
+$$
+\begin{array}{lclcl}
+    (a \vee b)  & \leftrightarrow &  (\neg \neg b \vee \neg \neg a) & \hspace*{.3in} & \mbox{E9. Double negation, applied twice}\\
+  \end{array}
+$$  
+
+A correct proof would need to acknowledge the use of commutativity and justify it on separate line, e.g., as 
+$$
+\begin{array}{lclcl}
+    (a \vee b)  & \leftrightarrow &  ( b \vee  a) & \hspace*{.3in} & \mbox{E3(b) Commutative Rule}\\
+ & \leftrightarrow &  (\neg \neg b \vee \neg \neg a) & \hspace*{.3in} & \mbox{E9. Double negation, applied twice}\\
+  \end{array}
+$$  
+
+\end{itemize}
+
+\newpage
+\subsection*{\textbf{Solution:}}
+
+For (a) and (b) we have started you off with the first line and the start of the last line as well as the structure of the intermediate lines (with accompanying latex formatting in the provided template).
+
+\begin{enumerate}[(a)]
+    \item
+    $$
+    \begin{array}{lclcl}
+    (x \leftrightarrow y) & \leftrightarrow &  \Bigl( (x \rightarrow y) \wedge (y \rightarrow x)\Bigr)& \hspace*{.3in}
+            & \mbox{E1(b). Def of $\leftrightarrow$}\\
+    & \leftrightarrow & \mbox{Next Statement}           &  & \mbox{Provide Justification}\\
+    &  \ldots         &       \ldots                    &  & \ldots     \\       
+    & \leftrightarrow & (\neg x \leftrightarrow \neg y) &  & \mbox{Provide Justification}
+    \end{array}
+    $$
+
+
+\item 
+$$
+\begin{array}{lclcl}
+    \Bigl(p \wedge (p \oplus q)\Bigr)
+    & \leftrightarrow &  \Bigl( p \wedge \bigl((p \wedge \neg q) \vee (\neg p \wedge q)\bigr)\Bigr)  & 
+     \hspace*{.2in} & \mbox{E1. Definition of $\oplus$}\\
+    & \leftrightarrow &  \mbox{Next Statement}           &  & \mbox{Provide Justification}\\
+    &  \ldots         &       \ldots                    &  & \ldots     \\     
+    & \leftrightarrow &  \Bigl(   p \wedge \neg q\Bigr)&
+                                     \hspace*{.2in} & \mbox{Provide Justification}
+\end{array}
+$$
+
+
+    \item 
+\end{enumerate}
+
+
+
+
+\newpage
+\section*{\textbf{Problem 2} [10 pts]}
+Parts (a), (b) and (c) below should all be solved using the formatting used in the study guide.
+More explicitly\\
+(a) should have the lines numbered,  with the premise on the first line and every other line explaining how it was derived from the previous lines.  E.g. In the same format as DSP1-4 in the study guide. \\
+(b) should have 8 rows, each one corresponding to one truth setting of $p,q,r.$ E.g., in the same format as Section 6 in the study guide. Hint: Your final table should have 14 columns, including the first 3.
+\\(c) should set specific values of $p,q,r$ and then show, line by line, how the proposition evaluates to $0$ for that setting. E.g., in the same format as Section 7 in the study guide.
+
+
+
+\begin{enumerate}[(a)]
+    \item Given the premise $(p \leftrightarrow q) \wedge(q \leftrightarrow r)$ give a deductive sequence proof that $p \leftrightarrow r.$\\
+    {\em \small Hint: Starting from the premise, prove separately that $p \rightarrow r$ and that $r \rightarrow p.$ Combining those two results with the definition of $\leftrightarrow$ proves your conclusion.}
+    
+    \item Now prove the same thing, i.e.,  
+     $\Bigl ((p \leftrightarrow q) \wedge(q \leftrightarrow r)\Bigr)\rightarrow (p \leftrightarrow r),$  {\em using a truth table.} 
+     Boldface or circle the column corresponding to the rightmost $\rightarrow$, which is the value of the full expression.\\
+We provide  a latex template of how to format the truth table with the $p,q,r$ columns filled in.    The letters A-K  denote the 11 columns that you must  fill in.
+
+     \item Prove that $\Bigl ((p \leftrightarrow q) \wedge(q \leftrightarrow r)\Bigr)\leftrightarrow (p \leftrightarrow r)$  {\em is NOT a tautology.}
+\end{enumerate}
+
+
+
+\newpage
+\subsection*{\textbf{Solution:}}
+
+\begin{enumerate}[(a)]
+\item \  [A formatted start of solution is provided.]
+
+$$
+\begin{array}{lclcl}
+ 1. & \ &  (p \leftrightarrow q) \wedge(q \leftrightarrow r)  &\hspace*{.2in} & \mbox{Premise}\\
+ 2. &   &  p \leftrightarrow q &     &  \mbox{Left Separation from line 1}\\
+ 3. &   &  q \leftrightarrow r &     &  \mbox{Right Separation from line 1 }\\
+ 4. &   &  \mbox{Statement}    &     & \mbox{Provide Justification}\\
+ 5. &   &  \mbox{Statement}    &     & \mbox{Provide Justification}\\
+\ldots  &   &  \ldots          &     &  \ldots \\
+\ldots  &   &  \ldots          &     &  \ldots \\
+\end{array}
+$$ 
+
+\bigskip
+
+%\par\noindent
+\item\  [A formatted latex template for the truth table is provided.\\  Columns A-K need to be filled in.]
+
+$$
+\begin{array}{|ccc||cccccccccccccccccccc|} \hline
+p & q &  r & \ &  \Bigl( &  ( & p & \leftrightarrow & q& ) &\wedge & ( & q & \leftrightarrow & r & ) & \Bigr) &\rightarrow & ( & p &\leftrightarrow &r & )\\\hline
+0 & 0& 0 &&&& A & B & C && D && E &F& G  &&& {\bf H} && I & J & K &\\\hline
+0 & 0& 1 &&&& A & B & C && D && E &F& G  &&& {\bf H} && I & J & K &\\\hline
+0 & 1& 0 &&&& A & B & C && D && E &F& G  &&& {\bf H} && I & J & K &\\\hline
+0 & 1& 1 &&&& A & B & C && D && E &F& G  &&& {\bf H} && I & J & K &\\\hline
+1 & 0& 0 &&&& A & B & C && D && E &F& G  &&& {\bf H} && I & J & K &\\\hline
+1 & 0& 1 &&&& A & B & C && D && E &F& G  &&& {\bf H} && I & J & K &\\\hline
+1 & 1& 0 &&&& A & B & C && D && E &F& G  &&& {\bf H} && I & J & K &\\\hline
+1 & 1& 1 &&&& A & B & C && D && E &F& G  &&& {\bf H} && I & J & K &\\\hline
+\end{array}
+$$
+
+\item 
+\end{enumerate}
+
+
+\newpage
+\section*{\textbf{Problem 3. P1.1.8 in book} [10 pts]}
+
+If $S$ is any finite set of positive naturals, let $sum(S)$ be the natural we get by adding the elements of $S$ together.
+\begin{enumerate}[(a)]
+    \item  There is exactly one set $S$ of positive naturals with $sum(S)$ = 0. Are there any other naturals $n$ for which there is exactly one set $S$ with $sum(S)= n$? \\
+    If there are not, prove that.\\
+    If there are, list them all and argue that you have them all.
+
+    \item  List all the sets $S$ with $sum(S)$ = 10. (\textbf{Hint}: There are exactly ten of them.)
+
+    \item  Suppose $S \not= T$ but $sum(S)= sum(T)$. Is it possible that $S \subseteq T$ or that $T \subseteq S$? Why or why not?
+
+\end{enumerate}
+{\em \small
+Note: The unique set $S$ referenced in (a) with $sum(S)=0$ is the empty set, i.e., $S= \{\,\} = \emptyset.$\\
+Also, remember that a set either contains an item or doesn't.  
+So, for example, the set $S = \{5,5,5, 1\}$ is actually the same as the set $S = \{5,1\}$ and has $sum(S) =6,$ and not $16.$
+}
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(a)]
+\item 
+\item 
+\item
+\end{enumerate}
+
+\newpage
+\section*{\textbf{Problem 4. Modification of Problem 1.1.10  in the book} [10 pts]}
+
+Let $D$  be a set of dogs, $R$ a set of retrievers, and $G$ a set of golden retrievers. Assume that $G \subseteq R$ and $R \subseteq D.$ For each of parts (a)-(d) below first answer (i) and then, starting on a new line, for (ii), provide  a complete logical justification as to why your answer is correct.  Your justification must use full sentences.
+
+Proving that a number is  the minimum number satisfying  a property requires proving {\em both} that the number satisfies the property {\em and} that no smaller number satisfies that property.
+
+
+\begin{enumerate}[(a)]
+    \item (i) With no other information, what is the minimum number of dogs that must exist? (ii) Justify your answer
+
+\item 	Suppose we know that all three  sets are different from each other.
+(i) What is the minimum number of dogs that satisfy this constraint? (ii)   Justify your answer.
+
+\item Suppose we know that no set is empty and that all sets are different from each other.
+(i) What is the minimum number of dogs that satisfy this constraint? (ii)   Justify your answer.
+
+\item 	Suppose we know that  $D \neq G$  but that the three sets are not all different.
+(i) What is the minimum number of dogs that satisfy this constraint? (ii)   Justify your answer.
+
+\end{enumerate}
+
+\subsection*{\textbf{Solution:}}
+
+\begin{enumerate}[(a)]
+\item (i)\\
+(ii)
+
+\item (i)\\
+(ii)
+
+\item (i)\\
+(ii)
+
+\item (i)\\
+(ii)
+ 
+\end{enumerate}
+
+
+
+\newpage
+\section*{\textbf{Problem 5. P1.4.3 in the book} [10 pts]}
+Another boolean operation is the ``NAND'' operation. where ``$x \ \mbox{\bf nand}\  y$'' is defined to be $\neg(x \wedge y).$
+\begin{enumerate}[(a)]
+    \item Explain why $x \ \mbox{\bf nand}\  x$ is equivalent to $\neg x.$
+    \item Can you find a compound proposition using only the NAND operator that is equivalent to $x \wedge y$? If yes, write it down.
+    \item Can you find a compound proposition using only the NAND operator that is equivalent to $x \vee y$? If yes, write it down.
+\end{enumerate}
+{\em Hint: In parts (b) and (c) you are permitted to use the NAND operator multiple times.
+\par\noindent 
+Historical Note: Historically, this had  implications in  hardware design, since {\bf nand} gates were easier to physically build than {\bf and} or {\bf or} gates.}
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(a)]
+\item 
+\item 
+\item
+\end{enumerate}
+
+
+
+
+
+\newpage
+\section*{\textbf{Problem 6. P1.5.10 in the book} [10 pts]}
+Let $X = \{1, 2, 3,. .., 10\}$ and let $I$ be the set of all \textbf{intervals} in $X$, that is, subsets of the form $\{a,. .., b\}$ for some naturals $a$ and $b$.
+
+\medskip
+{\em \small Note: By convention the empty set $\emptyset$ is an interval called the {\em empty interval} (it's what results when $b <a$).  Also $a=b$ is allowed.  This is called a singleton interval. As examples,  $\emptyset, \{3\}, \{3,4\},  \{5\} , \{3,4,5,6\}$ are all intervals,  but $\{3,5,6\}$ is NOT an interval.}
+
+\bigskip
+
+{\bf For each of (a), (b) and (c) below write the answer (number) in part (i) and in part (ii)  explain how you derived your answer.}
+
+\begin{enumerate} [(a)]
+    \item How many intervals are in the set $I$? (Don’t forget the empty set.) 
+    \item How many of the intervals are subsets of $\{2, 3, 4, 5, 6\}$?
+    \item How many of the intervals are disjoint from $\{2, 3, 4, 5, 6\}$?\\
+    {\em \small 
+    Note: An interval $Y$ is {\em disjoint} from $\{2, 3, 4, 5, 6\}$, if 
+    $Y \cap \{2, 3, 4, 5, 6\}= \emptyset$.
+    }
+\end{enumerate}
+
+\bigskip
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(a)]
+\item (i)\\
+(ii)
+
+\item (i)\\
+(ii)
+
+\item (i)\\
+(ii)
+\end{enumerate}
+
+
+
+\newpage
+\section*{\textbf{Problem 7. P1.7.6 in the book} [10 pts]}
+Suppose we substituted $a \oplus b$ for $p$ and $a \land b$ for $q$ in the contrapositive rule 
+$(p \rightarrow q) \leftrightarrow (\neg q \rightarrow \neg p)$ to get 
+$$\Bigl((a \oplus b) \rightarrow (a \land b)\Bigr) \leftrightarrow \Bigl((\neg a \land b) \rightarrow (\neg a \oplus b)\Bigr).$$ 
+
+\begin{enumerate}[(a)]
+    \item 
+ Verify that this result is \textit{not} a tautology.\\
+{\em \small Note:  Your verification should be in the same format as those in Section 7  of the  Equational and Deductive Sequence Proofs Study Guide.}
+
+\item  Why didn’t our substitution lead to a valid tautology? Explain.
+\end{enumerate}
+
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(a)]
+\item 
+\item  
+\end{enumerate}
+
+
+
+
+\newpage
+
+\section*{\textbf{Problem 8. P2.1.4 in the book} [10 pts]}
+Let $A$, $B$, and $C$ be sets defined in Exercise $2.1.1$ in the textbook\footnote{i.e., let $A$ be the set $\{1, 2\}$, $B$ be the set $\{x, y, z\}$, and $C$ be the set $\{$cat, dog$\}.$}.  
+
+\begin{enumerate}[(a)]
+ \item Explicitly list the direct products ($A \times B$) $\times$ $C$ and $A$ $\times$ ($B \times C$). (Note that an element of $A$ $\times$ ($B \times C$) is a pair whose first element is in $A$ and whose second element is in $B \times C$.) 
+
+\item If $X$, $Y$, and $Z$ are any sets, we generally do not distinguish among $X$ $\times$ ($Y \times Z$), ($X \times Y$) $\times$ $Z$, and the set of triples $X \times Y \times Z$. Explain how we may think of an element of each of these sets as an element of one of the others, by describing which elements of each set correspond to which elements of the others.
+\end{enumerate}
+
+\medskip
+
+\subsection*{\textbf{Solution:}}
+
+\begin{enumerate}[(a)]
+  \item 
+  \item
+\end{enumerate}
+
+
+
+\newpage
+
+
+\section*{\textbf{Extra Credit. Modified from Problem 1.6.9 in the book.} [10 pts]}
+In an islander problem\footnote{The classic setting for such problems is a remote island where some inhabitants always tell the truth and the others always lie. The logician Raymond Smullyan was famous for designing such puzzles to illustrate logical principles, as
+in his book {\em What is the Name of This Book?}.}, we are given a set of statements that are about one another.
+Each of a set of islanders makes a statement about the truth or falsity of their own or other
+islanders’ statements. Each statement is either true or false, so we have a set of compound
+propositions with an atomic variable for each. 
+
+\medskip
+
+Often  the problem is set up so that {\em exactly}
+one setting of the variables matches the variables. That is, each statement whose variable
+is set to true becomes true, and each one set to false becomes false.
+
+\medskip
+
+Given the following
+situations, which islanders, if any, are telling the truth?
+
+\medskip
+
+
+For the deductive sequence proofs you may use the statements of Questions 1 (a) and (b) at the start of this homework as accepted rules (that may shorten your proofs).
+
+
+
+
+
+
+\begin{enumerate}[(a)]
+    \item  There are two islanders.\\ A says “Exactly one of us is lying”.\\ B says “If A is telling the truth, then so am I.”
+
+    To set this up, the compound proposition for $A$  is  $A(a,b) = a \leftrightarrow (a \oplus b)$\\ and for $B$ is $B(a,b) = b  \leftrightarrow (a \rightarrow b).$
+
+    To solve this problem find a truth setting for $a,b$ that makes
+    $$\Bigl(A(a,b) \wedge B(a,b)\Bigr)  = \Bigl( a \leftrightarrow (a \oplus b)\Bigr) \wedge \Bigl( b \leftrightarrow (a \rightarrow b)\Bigr)
+    $$
+true.  We tell you in advance that there is exactly one  setting that makes this proposition true (but you may not use this fact in your derivation). 
+
+\medskip
+
+(i) Draw the complete truth table for this proposition (it has 13 columns in total including the first two)
+ and then, from it, report  for each of $A$ and $B$ whether they are telling the truth or lying. The truth table should show that there is exactly one unique setting that staisfies the constraints.
+
+ 
+ (ii) Now solve the same problem again, but  this time using a deductive sequence proof starting with the premises $A(a,b)$ and $B(a,b).$
+ 
+
+ 
+    \item There are three islanders.\\ A says “It is not the case that both the other two are telling
+the truth.” \\ B says “At least one of the other two is telling the truth.” \\C says “A is
+telling the truth, and if B is telling the truth then so am I.”
+
+
+    To set this up,  first find the compound propositions for $A(a,b,c),$ $B(a,b,c)$ and $C(a,b,c).$
+    We start you off by noting that 
+     $A(a,b,c) = a \leftrightarrow \neg(b \wedge c)$. In (i) and (ii) write the compound propositions for the other two.
+     
+     % \begin{enumerate}[(i)]
+     %     \item Write the compound proposition for $B(a,b,c).$
+     %     \item Write the compound proposition for $C(a,b,c).$
+     %     \item Now using a deductive sequence proof with premises  $A(a,b,c)$, $B(a,b,c)$ and $C(a,b,c)$ find a consistent setting for $a,b,c$  that satisfies the three premises.  Don't forget, after completing your proof, to show tht the setting you found satisfies the constraints.     
+     %     \item For each of A, B and C, state whether they are telling the truth or lying.
+     % \end{enumerate}
+     
+     % Now you write the compound propositions for the two others, i.e., fill in the blank underlined spaces in (i) and (ii).
+     
+     \begin{enumerate}
+         \item[(i)] $B(a,b,c) =  b \leftrightarrow  \rule{3cm}{0.4pt}$
+         \item[(ii)] $C(a,b,c) =  c \leftrightarrow  \rule{3cm}{0.4pt}$
+         \item[(iii)] Now using a deductive sequence proof with premises  $A(a,b,c)$, $B(a,b,c)$ and $C(a,b,c)$  at the top, find a consistent setting for $a,b,c$  that satisfies the three premises.  Don't forget, after completing your proof, to show that the setting you found satisfies the constraints.     
+         \item[(iv)] For each of A, B and C, say whether they are telling the truth or lying.
+     \end{enumerate}
+\end{enumerate}
+
+
+\newpage
+
+
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(a)]
+    \item 
+    (i) Draw the truth table and then, from it, state for each of $A$ and $B$ whether they are telling the truth or lying.
+We start you off by giving the structure of the table and filling in the 8 $a$ and $b$ columns.  You only need to fill in the 5 remaining ones.  You should  conclude that, given the premises there is only one possible setting for $a,b.$  You should then show that that setting satisfies the premises.
+ 
+
+$$
+\begin{array}{|c|c||ccccccccccccccccccc|}\hline
+ a & b & \Bigl( & a & \leftrightarrow & ( & a  &\oplus &  b & ) & \Bigr) & \wedge & \Bigl( & b & \leftrightarrow &  ( &a & \rightarrow  & b & ) & \Bigr) \\\hline
+ 0 & 0 &&0&&& 0 && 0 &&&&& 0 &&& 0 && 0 &&\\\hline
+ 0 & 1 &&0&&& 0 && 1 &&&&& 1 &&& 0 && 1 &&\\\hline
+ 1 & 0 &&1&&& 1 && 0 &&&&& 0 &&& 1 && 0 &&\\\hline
+ 1 & 1 &&1&&& 1 && 1 &&&&& 1 &&& 1 && 1 &&\\\hline
+ \end{array}
+ $$
+
+\bigskip
+
+ An alternative format that you could use would be to fill in 3 truth tables: one for $A(a,b),$ one for $B(a,b)$ and the third for $A(a,b) \wedge B(a,b).$ We also provide starters for that alternative format below.
+
+
+ $$
+ \hspace{-.4in}
+\begin{array}{|c|c||cccccccc|}\hline
+ a & b &  & a & \leftrightarrow & ( & a  &\oplus &  b & )  \\ \hline
+ 0 & 0 &&0&&& 0 && 0 &\\ \hline
+ 0 & 1 &&0&&& 0 && 1 &\\ \hline
+ 1 & 0 &&1&&& 1 && 0 &\\ \hline
+ 1 & 1 &&1&&& 1 && 1 &\\ \hline
+ \end{array}
+ \quad 
+ \begin{array}{|c|c||ccccccccc|}\hline
+ a & b &  & b & \leftrightarrow &  ( &a & \rightarrow  & b & ) & \\\hline
+ 0 & 0 &  & 0 &&& 0 && 0 &&\\\hline
+ 0 & 1 &  & 0 &&& 0 && 0 &&\\\hline
+ 1 & 0 &  & 1 &&& 1 && 1 &&\\\hline
+ 1 & 1 &  & 1 &&& 1 && 1 &&\\\hline
+ \end{array}
+ \quad 
+ \begin{array}{|c|c||ccc|}\hline
+ a & b &  A(a,b) &  \wedge  &B(a,b)  \\\hline
+ 0 & 0 &         &          &        \\\hline
+ 0 & 1 &         &          &        \\\hline
+ 1 & 0 &         &          &        \\\hline
+ 1 & 1 &         &          &        \\\hline
+ \end{array}
+ $$
+
+\bigskip
+
+(ii)  We start you off with the two premises and the structure of the proof.
+  $$
+\begin{array}{lclcl}
+ 1. & \ &  a \leftrightarrow (a \oplus b)      &\hspace*{.2in} & \mbox{Premise}\\
+ 2. & \ &  b \leftrightarrow (a \rightarrow b) &\hspace*{.2in} & \mbox{Premise}\\   
+ 3. & \ &  \mbox{Statement}                    &\hspace*{.2in}    & \mbox{Provide Justification}\\  
+ 4. & \ &  \ldots                  &\hspace*{.2in}    & \mbox{Provide Justification}\\  
+    & \ &  \ldots                  &\hspace*{.2in}    & \mbox{Provide Justification}\\
+    & \ &  \ldots                  &\hspace*{.2in}    & \mbox{Provide Justification}\\
+\end{array}
+$$
+\newpage
+    \item  
+    \begin{enumerate}[(i)]
+        \item $B(a,b,c) =  b \leftrightarrow  \rule{3cm}{0.4pt}$
+        \item $C(a,b,c) =  c \leftrightarrow  \rule{3cm}{0.4pt}$
+        \item  We start you off with the top of the proof.
+  $$
+\begin{array}{lclcl}
+ 1. & \ &  a \leftrightarrow \neg(b \wedge c)     &\hspace*{.2in} & \mbox{Premise}\\
+ 2. & \ &   \mbox{\em Fill in $B(a,b,c)$} &\hspace*{.2in} & \mbox{Premise}\\   
+ 3. & \ &  \mbox{\em Fill in $C(a,b,c)$}    &\hspace*{.2in}    & \mbox{Premise}\\  
+ 4. & \ &  \ldots                  &\hspace*{.2in}    & \mbox{Provide Justification}\\  
+    & \ &  \ldots                  &\hspace*{.2in}    & \mbox{Provide Justification}\\
+\end{array}
+$$
+        
+        \item 
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document} 

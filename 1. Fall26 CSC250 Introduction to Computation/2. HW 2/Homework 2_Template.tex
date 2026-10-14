@@ -1,0 +1,405 @@
+
+
+\documentclass[12pt]{article}         
+\usepackage{fullpage}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\title{250 Homework $\#$2 (Fall  2026)}
+\author{Firstname LastName \footnote{Collaborated with Nobody.}}
+%\author{Solution Sketches\footnote{Collaborated with Nobody.}}
+\begin{document}
+\date{}
+\maketitle
+
+This assignment is due at 11:59 p.m. on Friday 9 October 2026, to 
+be submitted on Gradescope.  Late assignments (with penalty, unless
+excused) will be accepted until
+11:59 p.m. on Saturday 10 October 2026, and not after.  Please see
+the syllabus for more details on homework grading and late penalties.
+
+\medskip
+
+When submitting to Gradescope, please do not forget to assign pages to problems.
+
+\medskip
+
+
+All problems, with the exception of the first two and ,  originally come from the textbook. Some of them have been modified.  In case of doubt, the version printed here is the one you should follow.
+
+\bigskip
+
+
+The instructions for this homework are the same as for HW1.  Please read them there.
+
+
+
+\bigskip
+
+
+See the Canvas Homework web page for detailed instructions on how to format solutions.  Solutions that do not follow those formatting instructions  will be returned for rewriting and resubmission. In later assignments there will be points deducted for such formatting errors.  
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section*{\textbf{Question 1} [10 pts]}
+{\em \small Your solution should follow the format given on  pages 17-19 of the relation study guide.}
+
+
+  Let $A =\{a,b,c,d,e\}$.  The relation $P \subseteq A \times A$ is a {\bf partial order}.\\
+It is known that 
+\begin{enumerate}
+\item  $(a,b),(b,c),(d,e), (d,b)\in P$ and
+%\item $(a,d), (b,d),(b,e), (c,b), (c,d) \in P,$   and
+%\item  $(b,a), (e,d) \not \in P.$
+\item $(c,e), (e,b),(d,a),(b,d) \not\in P.$
+\end{enumerate}
+
+
+(i) In the table given below,  label all pairs that must be  in $P$ with a  ``$\checkmark$'' and all pairs that cannot be in $P$ with a  ``$\times$.''  For pairs that are neither,  leave their entry blank.  We start you off by labelling  the five  known pairs with the appropriate  ``$\checkmark$'' or $\times.$
+
+\smallskip
+
+For full credit, you must justify your answers.  Do that by numbering your justifications and,  next to each  $\checkmark$ or $\times$ in the table,  write the number of the justification for that entry.
+
+
+\medskip
+
+$$\small
+\hspace*{-.5in}
+\begin{array}{|c|c||c||c|c||c||c|c||c||c|c||c||c|c|}
+\hline
+(a,a) &  \quad & &(b,a) &    & &  (c,a)  & \quad &  & (d,a) & \times 2 &  &(e,a) & \quad \\\hline
+(a,b) & \checkmark 1  & &(b,b) &   & &  (c,b)  &   &  & (d,b)  &  \checkmark  1&  &(e,b) & \times 2 \\\hline
+(a,c) &   & &(b,c) &  \checkmark 1 & &  (c,c)  &  &  & (d,c) &  &  &(e,c) &   \\\hline
+(a,d) &    & &(b,d) &  \times 2  & &  (c,d)  &   &  & (d,d) &  &  &(e,d) &     \\\hline
+(a,e) &   & &(b,e) &    & &  (c,e)  & \times 2 &  & (d,e) & \checkmark 1 &  &(e,e) &   \\\hline
+\end{array}
+$$
+
+
+\medskip
+
+\bigskip
+
+(ii) How many partial orders  $P'$  exist such that $(a,b)$, $(b, c)$, $(d,e)$ and $(d, b)$ are in $P'$, and that satisfy that  $(c,e)$, $(e,b)$, $(d,a)$, and $(b,d)$ are not in $P'$?
+Briefly explain how you know this. 
+
+Draw a separate Hasse diagram for each such partial order $P'.$\\
+Note. You must  draw these using the convention  taught in class: an edge corresponding to relation $(a,b)$ must go {\em up} from $a$ to $b.$  
+
+
+\bigskip
+
+\subsection*{\textbf{Solution:}}
+ \begin{enumerate} [(i)]
+     \item 
+     \item 
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+
+\section*{\textbf{Question 2} [10 pts]}
+{\em \small Your solution should follow the format given on  pages 20-23  of the relation study guide.}
+
+\medskip
+
+  Let $A =\{a,b,c,d,e,f,g\}$.  The relation $Q \subseteq A \times A$ is an {\bf equivalence relation}.\\
+It is known that 
+\begin{enumerate}
+\item $(a,b), (c,d),(e,f)\in Q,$   and
+\item  $(c,f), (g,e)\not \in Q.$
+\end{enumerate}
+
+
+
+\medskip
+
+
+\par\noindent{(i)}  In the table given below,  label all pairs that must be  in $Q$ with a  ``$\checkmark$'' and all pairs that cannot be in $Q$ with a  ``$\times$.''  For pairs that are neither,  leave their entry blank.  We start you off by labelling  the five  known pairs with the appropriate  ``$\checkmark$'' or $\times.$
+
+\smallskip
+
+For full credit, you must justify your answers.  Do that by numbering your justifications and,  next to each  $\checkmark$ or $\times$ in the table,  write the number of the justification for that entry.
+
+$$\small
+\hspace*{-.5in}
+\begin{array}{|c|c||c||c|c||c||c|c||c||c|c||c||c|c||c|| c|c|| c|| c| c|}
+\hline
+(a,a) &  \quad & &(b,a) &  \quad & &  (c,a)  & \quad &  & (d,a) & \quad &  &(e,a) & \quad &  &(f,a) & \quad &   & (g,a) & \quad \\\hline
+(a,b) &  \checkmark 1 & &(b,b) &   & &  (c,b)  & &  & (d,b) & &  &(e,b) & &  &(f,b) & &   & (g,b) &  \\\hline
+(a,c) &  \quad & &(b,c) &  \quad & &  (c,c)  & \quad &  & (d,c) & \quad &  &(e,c) & \quad &  &(f,c) & \quad &   & (g,c) & \quad \\\hline
+(a,d) &   & &(b,d) &   & &  (c,d)  &  \checkmark 1 &  & (d,d) &  &  &(e,d) &  &  &(f,d) & &   & (g,d) &  \\\hline
+(a,e) &   & &(b,e) &   & &  (c,e)  &  &  & (d,e) &  &  &(e,e) &  &  &(f,e) &  &   & (g,e) & \times  2  \\\hline
+(a,f) &   & &(b,f) &   & &  (c,f)  & \times  2  &  & (d,f) &  &  &(e,f) & \checkmark  1&  &(f,f) &  &   & (g,f) &  \\\hline
+(a,g) &   & &(b,g) &   & &  (c,g)  &  &  & (d,g) &  &  &(e,g) &  &  &(f,g) &  &   & (g,g) &  \\\hline
+
+\end{array}
+$$
+\bigskip
+
+
+
+
+\bigskip
+
+\par\noindent{(ii)}
+(a) How many equivalence relations  $Q'$  exist that satisfy 
+$(a,b), (c,d),(e,f)\in Q',$   and
+  $(c,f), (g,e) \not \in Q'?$
+
+%$(a,b), (c,b),(d,b), (e,f) \in Q',$   and $(e,b) \not \in Q'.$
+%Briefly explain how you know this. 
+
+(b) Also, write down,  in partition format, all of the equivalence relations that satisfy the 5 known pairs. It is not necessary to show how you derived  them.
+
+
+When writing down  a partition, each of the subsets should  be written in alphabetical order with each set being written in alphabetical order and the order of the sets being the alphabetical ordering of their `first' element. For example,   the equivalence relation  that has $g,c,e$ together,  $d,b$ together and $a,f$ together should be written as  $\Bigl\{ \{a,f\}, \, \{b,d\},\, \{c,e,g\}\Bigr\}.$
+
+\subsection*{\textbf{Solution:}}
+ \begin{enumerate} [(i)]
+     \item 
+     \item
+        \begin{enumerate}[(a)]
+            \item 
+            \item 
+        \end{enumerate}
+\end{enumerate}
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section*{\textbf{Question 3. P2.1.7} [10 pts]}
+ Let $X$ be a set of at least two people.  We will ask each person in $X$ to write down the name of a person in $X$ other than themself. Let $R$ be the relation $\{\langle a, b\rangle$ : $a$’s chosen name is $b\}$. Suppose we start with a given person $a$, move to the person that $a$ wrote down, then to the person that they wrote down, and so forth until we reach a given person $b$. Let $S$ be the relation 
+ $$ S =\{\langle a, b\rangle: \mbox{Starting from $a$, we eventually reach $b$ by this process}\}.$$
+\begin{enumerate}[(a)]
+    \item  If from $a$, we reach $a$ again before finding $b$, explain why we will never reach $b$.
+
+    \item  If $\langle a, b\rangle$ is not in $S$, when can we give up on the process, i.e., be  sure that $\langle a, b\rangle$ is not in $S.$
+    
+    \item  If $\langle a, b\rangle$ is not in $S$,  will we definitely reach $a$. i.e., is $\langle a, a\rangle$ in $S?$ If the answer is yes, prove it.  If the answer is no, give a counterexample in which 
+    $\langle a, b\rangle \not\in S$ but $\langle a, a\rangle \not\in S.$ 
+
+\end{enumerate}
+
+
+\subsection*{\textbf{Solution:}} %MJG
+\begin{enumerate}[(a)]
+\item 
+\item 
+\item 
+\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section*{\textbf{Question 4. P2.3.3} [10 pts]}
+ Let $A$ and $B$ be two types such that $A$ is a proper subset of $B$ ($A \subset B$, i.e., so that $B$ contains all the elements of $A$ plus at least one other element). Let $P$ be a unary predicate on $A$, and let $Q$ be a unary predicate on $B$. Suppose that $\forall a: \forall b : P(a) \rightarrow Q(b)$ is true.
+ 
+ Which of the following four statements is guaranteed to be true? For each statement, explain why it is always true or give an example where it is false. (Hint: Consider the case where $A$ is empty.)
+\begin{enumerate}[(a)]
+    \item  ($\forall a : P(a)$) $\rightarrow$ ($\forall b : Q(b)$)
+
+    \item  ($\forall b : Q(b)$) $\rightarrow$ ($\forall a : P(a)$) 
+
+    \item  ($\exists a : P(a)$) $\rightarrow$ ($\exists b : Q(b)$) 
+
+    \item ($\exists b : Q(b)$) $\rightarrow$ ($\exists a : P(a)$)
+
+\end{enumerate}
+
+
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(a)]
+    \item
+    \item 
+    \item 
+    \item
+\end{enumerate}
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+\newpage
+
+
+
+
+\section*{\textbf{Question 5. Modified from P2.3.8} [10 pts]}
+ Let $X$ be a set and $R(x)$ a unary predicate on $X$.
+
+\begin{enumerate}[(a)]
+
+    \item  Write a quantified statement that says “there is  exactly one
+    element $x$ in $X$ such that $R(x)$ is true”.
+    \item  Write a quantified statement that says “there are exactly two elements $x$ in $X$ such that $R(x)$ is true”.
+    
+    \item  Write a quantified statement that says “there are at least three elements $x$ in $X$ with $R(x)$ true, and at least three with $R(x)$ false”
+
+{\em \small Note:  (a) is so common that there is shorthand  macro for writing it.  ``\, $\exists! x: R(x)$'' denotes that there is a unique $x \in X$ satisfying $R(x),$ which is what (a) is stating. This problem is asking you how to write this from scratch. 
+
+Your statements may use  the binary relations $x = y$ and $x \neq y).$}
+\end{enumerate}
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(a)]
+\item 
+\item 
+\item 
+\end{enumerate}
+
+
+
+% %%%%%%%%%%%%%%%%%%
+\newpage
+\section*{\textbf{Question 6. P2.6.10} [10 pts]}
+ One day, a set of five dogs met after their morning walks to compare their observations of birds. 
+ The set $D$ of dogs consisted exactly of Arly ($a$), Cardie ($c$), Duncan ($d$), Mia ($m$), and Whistle ($w$). 
+ 
+ The set $S$ of bird species in question consisted exactly of Bluebird ($B$), Crow ($C$), Heron ($H$), Mallard ($M$), and Woodpecker ($W$). 
+ 
+ The predicate $R(x, y)$ means “dog $x$ observed a bird of species $y$”. 
+ 
+ (a) Translate the following statements into symbolic language. 
+\begin{enumerate}[I.]
+
+    \item  There was a species that was observed by all the dogs.
+    
+    \item  Arly observed a Crow and no other species.
+    
+    \item  Every dog other than Arly observed at least two different species.
+    
+    \item  Each dog, other than Arly and Cardie, observed all the species that Cardie observed and at least one that Cardie did not. (Note: Different dogs may have observed different species that Cardie did not.)
+    
+    \item  Duncan was the one and only dog to observe a Woodpecker, and Whistle was the one and only dog to observe a Bluebird.
+    
+\end{enumerate}
+ (b) Use statements (I)-(V)  to prove that some dog observed a Heron, i.e., 
+ $\exists x: R(x,H).$
+
+ Your proof should provide all steps.  In particular, it should explicitly state when Instantiation, Specialization, etc  are used.
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(a)]
+\item 
+    \begin{enumerate}[I.]
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    \end{enumerate}
+\item
+\end{enumerate}
+ \newpage
+
+
+
+%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section*{\textbf{Question 7. P2.9.5} [10 pts]}
+{\em \small Note: Be aware that, in the textbook, this problem spans two pages. Also, the solution to this one is long.}
+
+ Let $A = \{v, w\}$ and $B = \{x, y, z\}$ be sets of characters.
+
+
+
+\begin{enumerate}[(a)]
+    \item  List all the possible functions from $A$ to $B$. Determine which are injections.
+
+    \item  List all the possible functions from $B$ to $A$. Determine which are surjections. 
+
+
+    \item  How many possible functions are there from $A$ to $A$? How many can be expressed as $g \circ f$, where $f$ is a function from $A$ to $B$ and $g$ is a function from $B$ to $A$?
+
+    \item How many possible functions are there from $B$ to $B$? How many can be expressed as $f \circ g$, where $g$ and $f$ are functions as above?
+
+
+\end{enumerate}
+
+\begin{enumerate}[(a)]
+    \item
+    \item
+    \item
+    \item
+\end{enumerate}
+    
+
+
+%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section*{\textbf{Question 8. P3.1.4} [10 pts]}
+ The $\textbf{least common multiple}$ of two naturals $x$ and $y$ is the $smallest$ natural that both $x$ and $y$ divide. For example, $lcm$(8, 12) = 24 because 8 and 12 each divide 24, and there is no smaller natural that both 8 and 12 divide.
+\begin{enumerate}[(a)]
+
+    \item  Find the least common multiple of 60 and 339. \\
+    Write it out as a number and not, e.g., as its prime factorization.
+
+    \item  Find the least common multiple of $2^3 \cdot 3^2 \cdot 5^4$ and $2^2 \cdot 3^4 \cdot 5^3$. \\
+     Write it out as a number and not, e.g., as its prime factorization
+
+    \item  Describe a general method to find the least common multiple of two naturals, given their factorization into primes (and assuming that the factorization exists and is unique).
+    Write your solution in terms of $p_i(m)$ and $p_i(n)$ as described below.
+    
+    {\em Notation:}  Let $p_i$ be the $i$'th prime.  For  natural $m,$  let $p_i(m)$ be the exponent of $p_i$ in the prime factorization of $m,$ i.e., the largest power in $p_i$ that divides $m.$  So $m= \prod_{i=1}^\infty p_i^{p_i(m)}.$ Example: 
+    $p_1=2,$ $p_2=3$ and $p_3=5.$  Since $20= 2^2 \cdot 5^1,$  $p_1(20)=2,$     $p_2(20)=0,$  $p_3(20)=1$ and, $\forall i > 3,$ $p_i(20)=0.$
+\end{enumerate}
+
+
+\subsection*{\textbf{Solution:}} 
+\begin{enumerate}[(a)]
+ \item  
+ \item  
+ \item  
+\end{enumerate}
+
+
+
+\newpage
+
+\section*{\textbf{Extra Credit. P2.1.10 in the book.} [10 pts]}
+Let $C$ be a set of $n$ candidates and $J$ be a set of $n$ jobs. Define the relation $Q$ to be 
+$$Q = \{\langle c, j\rangle \,:\, \mbox{candidate $c$ is qualified for job $j$}\}$$
+Define the relation $A$ to be 
+$$ A = \{\langle c, j\rangle  \,:\, \mbox{candidate $c$ is assigned to job $j$}\} .$$
+\begin{enumerate}[(a)]
+
+    \item We say that candidate $c$ is “possible” for job $j$ if they are qualified for $j$, they are not assigned to any other job, and no one else is assigned to $j$. Informally describe how you would determine, given boolean arrays for the relations $Q$ and $A$, whether $c$ is possible for $j$.\\
+    {\em \small Note:  This problem is essentially asking you to design an algorithm to  {\em verify} whether a given assignment $A$ of people to jobs is possible.}
+
+    \item One way to assign candidates to jobs would be to start with an empty assignment and repeatedly find a possible candidate for a job and assign them to it, until there are no possible candidates left. This \textbf{greedy algorithm} will not necessarily assign the greatest possible number of candidates to jobs. Find an example where there is a possible assignment of qualified candidates for all the jobs, but there is a sequence of assignments of possible candidates that stops, with no further assignments possible, while some jobs are still unfilled.\\
+     {\em \small Note:  This is asking you to design just  {\em one} counterexample.  The counterexample could be very small, e.g., only 2 or 3 people and jobs.}
+ 
+
+    
+\end{enumerate}
+
+\subsection*{\textbf{Solution:}}
+%Modified by Mordecai
+
+\begin{enumerate}[(a)]
+    \item
+    \item
+\end{enumerate}
+
+
+
+\end{document} 
