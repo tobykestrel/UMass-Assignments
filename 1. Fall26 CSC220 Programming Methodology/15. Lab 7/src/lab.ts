@@ -17,31 +17,43 @@ export interface NewsOutlet {
 
 export class NewspaperApp implements NewsOutlet {
   // TODO: initialize state
-  constructor() {}
+  private readers: Set<Reader> = new Set();
+  private techReaders: Set<Reader> = new Set();
+  constructor(initialReaders: Reader[] = [], initialTechReaders: Reader[] = []) {
+    for (const reader of initialReaders) this.readers.add(reader);
+    for (const reader of initialTechReaders) this.techReaders.add(reader);
+  }
 
   // subscribe a Reader to the appropriate headline feed(s)
   subscribe(reader: Reader, techOptIn: boolean = false): void {
     // TODO: implement this method
+    this.readers.add(reader);
+    if (techOptIn) this.techReaders.add(reader);
   }
 
   // unsubscribe a Reader from all headline feeds
   unsubscribe(reader: Reader): void {
     // TODO: implement this method
+    this.readers.delete(reader);
+    this.unsubscribeFromTechNews(reader);
   }
 
   // unsubscribe a Reader from the technology news headline feed
   unsubscribeFromTechNews(reader: Reader): void {
     // TODO: implement this method
+    this.techReaders.delete(reader);
   }
 
   // notify all subscribers of a breaking news headline
   private _notifyBreakingNews(headline: string): void {
     // TODO: implement this method
+    for (const reader of this.readers) reader.alert(headline);
   }
 
   // notify all opted-in subscribers of a technology news headline
   private _notifyTechNews(headline: string): void {
     // TODO: implement this method
+    for (const reader of this.techReaders) reader.alert(headline);
   }
 
   // create a new headline in a given category
