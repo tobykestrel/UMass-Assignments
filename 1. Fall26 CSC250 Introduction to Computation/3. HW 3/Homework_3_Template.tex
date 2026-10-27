@@ -1,0 +1,361 @@
+
+
+\documentclass[12pt]{article}         
+\usepackage{fullpage}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{hyperref} 
+
+\title{250 Homework $\#$3 (Fall  2026)}
+\author{Firstname LastName \footnote{Collaborated with Nobody.}}
+%\author{Solution Key \footnote{Collaborated with Nobody.}}
+\begin{document}
+\date{}
+\maketitle
+
+
+ This assignment is due at 11:59 p.m.~on Friday 23  October 2026, to 
+be submitted on Gradescope.  Late assignments (with penalty, unless
+excused) will be accepted until
+11:59 p.m. on Saturday 24 October  2026, and not after.  Please see
+the syllabus for more details on homework grading and late penalties.
+
+\medskip
+
+When submitting to Gradescope, please do not forget to assign pages to problems.
+
+\medskip
+
+
+All problems, with the exception of problem 2, originally come from the textbook. Some of them have been modified.  In case of doubt, the version printed here is the one you should follow.
+
+\bigskip
+
+
+The instructions for this homework are the same as for HW1 and HW2.  Please read them there.
+Also, do not forget to fill out the questionnaire describing collaboration and use of LLMs that appears as a separate submission on Gradescope.
+
+
+
+
+% The main Canvas Homework page gives detailed submission guidelines, split into 6 major areas, listed below.  Please see the Canvas Homework page for the complete  guideline details.
+
+
+
+
+% \begin{enumerate}
+% \item {\bf Proper page formatting.}
+% (Use of Latex is recommended).
+% \item {\bf Proper proof writing and formatting.}\\
+% Proofs are marked on understandability, as well as correctness.
+% \item {\bf Only use notation taught in class.}
+% \item {\bf Use specified  proof structures. }
+% \item {\bf Properly declare collaborations and resources used.}\\
+% Fill out the brief individual form for each question.\\
+% This will be available as a survey on Canvas.
+% \item {\bf Proper Use of LLMs.}
+% \end{enumerate}
+
+% Solutions that do not follow guidelines  1-4 will not be marked.
+% Submissions  not satisfying  1 and 2 will will be returned for rewriting and resubmission. and  points will be deducted for the original solutions not following guidelines 1 and  2;   solutions not following 3 and 4 will not be marked.
+% Questions that do not have their acknowledgment form (guidelines 5 and 6) completed, will not be marked.
+
+
+
+\bigskip
+
+
+See the Canvas Homework web page for detailed instructions on how to format solutions.  Solutions that do not follow those formatting instructions  will be returned for rewriting and resubmission. In later assignments there will be points deducted for such formatting errors.  
+ 
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{\textbf{Q1. Modified from  P3.1.1} [5 pts]}
+
+The primes have a strange distribution.  See, e.g.,  
+\url{https://en.wikipedia.org/wiki/List_of_prime_numbers}  
+for a list of the first 1000 primes. It shows that, the primes are scattered.  Sometimes two consecutive primes only  differ by two, e.g., 7589 and 7591. Sometimes they differ by quite a lot and you get a long run of composite numbers.  E.g., 7759 is prime and the next prime after it is 7789, so the run of 29 numbers starting with 7760 are all composite.
+
+For this problem 
+ find 75  consecutive naturals that are all composite. (\textbf{Hint}: The \textbf{factorial} of a natural $k$, written $k!$, is the product $1 \cdot 2 \cdot . . . \cdot k$. You can tell a lot about which numbers divide $k!$.) \\
+
+\textit{Note:  To solve this problem you only need to write down the first number in the series and state that the next 74 numbers are all composite, explaining why you know this. The first item can be written using factorial notation and summation.}
+
+\subsection*{\textbf{Solution:}}
+
+
+
+
+\newpage
+
+\section*{\textbf{Q2. New Problem from Section 3.5} [10 pts]}
+\begin{enumerate}[(a)]
+    \item  Use the extended gcd algorithm to find integers $a$ and $b$ satisfying $a \cdot 137 + b \cdot 111 = 1$.  Show all steps of the algorithm.       \\
+    For full credit you must use the exact  technique we taught in class, which is designed to catch errors early.
+    Use of a different technique will lead to points being deducted, even for a correct final result.
+    
+     {\em \small Note:  You should check the solution of (a) before proceeding to (b) and (c). Errors in (b) and (c) resulting from finding   an incorrect $a,b$  pair in part (a) will not receive partial credit. }
+
+    \item  Find a multiplicative inverse of 137 modulo 111 and a multiplicative inverse of 111 modulo 137.  The inverses you derive should be the smallest natural numbers that are inverses. 
+
+
+    \item  Find the smallest natural solution to the congruences $x \equiv 2$ (mod 137) and $x \equiv 3$ (mod 111).  Show your work.
+
+\end{enumerate}
+
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(a)]
+    \item  
+    \item
+\end{enumerate}
+
+
+\newpage
+
+
+\section*{\textbf{Q3. Modified from P3.3.4} [10 pts]}
+We have defined the \textbf{factorial} $n!$ of a natural $n$ to be the product of all the naturals from $1$ through $n$, with $0!$ being defined as $1$. Let $p$ be an odd prime number. 
+
+
+\begin{itemize}
+\item [(a)] Prove that the only solutions to $x^2 \equiv 1\  (\bmod \ p)$ satisfying $ 0 < x < p$ are $x=1$ and $x=p-1.$
+
+{\em \small {\bf Hint:}
+Note that $x^2 \equiv 1 \ (\bmod \ p)$ is equivalent to $(x^2-1) \equiv 0\  (\bmod \ p)$  and that 
+$x^2 -1 = (x-1) (x+1).$
+}
+
+
+ \item [(b)] Prove that $(p - 1)!$ is congruent to $-1$ modulo $p$. 
+
+ {\em \small {\bf Hint:} Use part (a) and also pair as many numbers as you can with their multiplicative inverses.
+
+ {\bf Examples:} $4!=24$, $6!=720$ and $10!=3628800$  while 
+ $24 \equiv -1 \ (\bmod\  5),$
+  $720 \equiv -1 \ (\bmod \ 7),$ and
+   $3628800 \equiv -1 \ (\bmod \ 11)$ 
+ 
+ 
+}
+
+\end{itemize}
+
+
+
+
+\subsection*{\textbf{Solution:}}
+
+
+\begin{itemize}
+\item [(a)] 
+
+ \item [(b)]  
+\end{itemize}
+
+\newpage
+\section*{\textbf{Q4. P3.5.10 Modified} [15 pts]}
+Lecture 18 will discuss how to use {\em induction} to prove facts about a particular change-making problem.  In this question 
+%(which is very similar but  more general) 
+you only need to use number-theoretic   facts and not induction.
+
+Let $m$ and $n$ with $m < n$ be two positive naturals. We say that  natural $x$ is {\em $(m,n)$-good}  if $x$ can be 
+expressed as  a linear combination  $a \cdot m + b \cdot  n$  where $a$ and $b$ are naturals, i.e., non-negative integers.
+%If $x$ is not {\em $(m,n)$-good}  it will be {\em $(m,n)$-bad.}  If $m,n$ are fixed we will just write {\em good} and {\em bad}.
+
+In parts (c) and (d), $[x]$ denotes the equivalence class of $x$ modulo $m.$
+
+
+Parts (a) and (b) introduce you to the setup. Parts (c)-(f) are proving the Theorem that ``There are an infinite number of {\em $(m,n)$-bad} naturals if and only if $m$ and $n$ are not relatively prime.''
+
+ \begin{enumerate}[a)]
+    \item Let $m = 2$ and $n = 3.$ Prove that all  naturals except  $1$  are {\em $(2,3)$-good} and 
+    $1$ is {\em $(2,3)$-bad}. 
+    \item Determine all  naturals which are {\em $(3,5)$-good} and all which are {\em $(3,5)$-bad}. Prove your statement.
+    % \item Let $x_1,x_2$ be naturals with $0 \le x_1 < x_2 < m.$ Prove that $ x_1 n \not\equiv x_2 n \, (\bmod \ m)$, i.e., that $[x_1 n] \not = [x_2 n],$ where $[i]$ is the equivalence class modulo $m.$
+    \item Let  $m,n$ be relatively prime and $i \in \{0,1,2,\ldots,m-1\}.$ Prove that there for every such $i$ there exists natural $j_i$ such that $j_i \cdot n \equiv i  \, (\bmod \ m)$.  \\
+    Equivalently prove that
+    there exists a natural $j$ satisfying $[j_i \cdot n]= [i]$. 
+    \item Suppose  that  $x$ is {\em $(m,n)$-good}. Prove that  if  $y \ge x$ and $y\in [x],$ then $y$ is {\em $(m,n)$-good}.
+    \item Let $m,n$ be relatively prime. Prove that only  a finite number of naturals are {\em $(m,n)$-bad.} 
+    Equivalently, prove that there exists natural $N,$ such that if  $x \ge N,$ $x$ is {\em $(m,n)$-good}.
+    \item Suppose $m,n$ are NOT relatively prime.\\  Prove that the set of {\em $(m,n)$-bad} naturals is infinite.
+    
+\end{enumerate}
+
+{\em \small Hints and comments:
+\begin{enumerate}[1.]
+\item $0$ is always $(m,n)$-good for all $m,n.$
+\item For (c), you may either prove from scratch or use any fact that we have proven in class.
+\item For (e), use parts (c) and (d). If you get stuck, you might want to look ahead to the example shown at the end of Lecture 18 to see how this can be helpful.
+\item  For (f), construct an infinite sequence, all of whose elements are $(m,n)$-bad.
+\end{enumerate}
+}
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(a)]
+\item 
+\item 
+\item 
+\item 
+\item 
+\item 
+\end{enumerate}
+
+
+\newpage
+
+\section*{\textbf{Q5. P3.6.4} [10 pts]}
+ In this problem we will work with strings over the alphabet $\{a, b\}$, and let our “multiplication” be string concatenation. 
+ 
+ We say that one string $u$ “divides” another string $v$ if $\exists x : \exists y : xuy = v$, or equivalently, if $u$ is a substring of $v$.  This is denoted by $D(u,v)$.
+
+ 
+ 
+ As with the naturals, we redefine the word “prime” for strings so that $P(w)$ means “$w \not = \lambda$ and if $D(x,w)$ is true, then either $x = \lambda$ or $x = w$”
+
+\begin{enumerate}[(a)]
+    \item  What strings are “prime” using this definition? 
+    
+    \item  Explain why any string factors uniquely as a product (concatenation) of these “primes”.
+
+    \item  Prove a version of the Atomicity Lemma for these “primes”.
+
+    \item  Show that any nonempty string that is \textit{not} one of your “primes”” fails to satisfy the Atomicity Lemma, even in the simple version.
+
+\end{enumerate}
+\textit{
+Notes:
+\begin{enumerate}[(i)]
+    \item  You can prove (c) by following the structure of the proof of the original atomicity lemma in the book and first proving a simple version and then a complete version.
+    \item  The proof of the simple version should be easier than the proof for naturals.  You can write it in words. You may assume that given a character ‘c' and a string ’s’, you are always able to tell whether ’c’ is in ’s’ or not.
+\end{enumerate}
+}
+
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(a)]
+    \item 
+    \item 
+    \item 
+    \item
+\end{enumerate}
+
+
+\newpage
+\section*{\textbf{Q6. P4.1.6} [10 pts]}
+ (uses Java) Give a recursive definition of and a recursive static method for the natural subtraction function, with pseudo-Java header
+ 
+ \begin{center}
+     \texttt{natural minus (natural $x$, natural $y$).}
+ \end{center}
+ On input $x$ and $y$ this function returns $x - y$ if this is a natural (i.e., if $x \geq y$) and 0 otherwise.
+
+\subsection*{\textbf{Solution:}}
+
+\newpage
+
+
+
+\section*{Q7  Modified 4.3.1 [10 pts]}
+
+
+
+Define $S_n = \sum_{i=0}^n i^3,$ i.e., as the sum of the first $i$ cubes . Prove by induction that, for all naturals $n,$ 
+\begin{equation}
+        S(n) = \frac  {n^2(n+1)^2} 4. 
+\end{equation}
+
+Your proof should be split into three parts
+
+\begin{enumerate}[(i)]
+    \item State your inductive hypothesis $P(n).$ \\
+    (This must explicitly  state what set $n$ comes from.)
+    \item State and justify the correctness of the base case.
+    \item Prove the correctness of the induction step. \\This must explicitly state exactly  in which step(s) the proof   is using the inductive hypothesis.\\
+    Also, every line of your proof should follow easily from the previous line. It's your job to provide justification of each step from the previous one,  not the reader's.  
+\end{enumerate}
+
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(i)]
+    \item 
+    \item 
+    \item 
+\end{enumerate}
+
+
+
+
+
+\newpage
+
+\section*{Q8  Modified 4.3.3 [10 pts]}
+
+Let the finite sequence   $a_0,a_1,\ldots,a_n$ be defined by the rule $a_i = a_0 \cdot r^i$, where $r$ is some number not equal to $1.$
+Prove by induction on $n$ that 
+$$\sum_{i=0}^n a_i =  \frac {a_0- a_{n+1}} {1-r},
+$$
+where $a_{n+1}$ is defined by the same rule even though it is not part of the sequence.
+
+\medskip
+
+
+{\em \small Note:  This is just the formula for the sum of a geometric sequence. But, you cannot use that fact.  The problem is asking you to prove this directly from scratch using simple induction.}
+
+\medskip
+
+Your proof should be split into three parts
+\begin{enumerate}[(i)]
+    \item State your inductive hypothesis $P(n).$ 
+    \item State and justify the correctness of the base case.
+    \item Prove the correctness of the induction step. \\This must explicitly state exactly  in which step(s) the proof   is using the inductive hypothesis.\\
+    Also, every line of your proof should follow easily from the previous line. It's your job to provide justification of each step from the previous one,  not the reader's.  
+\end{enumerate}
+
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(i)]
+    \item 
+    \item 
+    \item 
+\end{enumerate}
+
+
+\newpage
+
+\section*{\textbf{EC: P3.4.6} [10 pts]}
+A \textbf{Fermat number} is a natural of the form $F_i = 2^{2^i} + 1$, where $i$ is any natural. In 1730 Goldbach used Fermat numbers to give an alternate proof that there are infinitely many primes.
+\begin{enumerate}[(a)]
+
+    \item List the Fermat numbers $F_0, F_1, F_2, F_3$, and $F_4$.
+    
+    \item Prove that for any $n$, the product $F_0 \cdot F_1 \cdot \ldots \cdot F_n$ is equal to $F_{n+1} - 2$.
+    
+    {\em Hint. we recommend proving this by induction.  If you do prove it via induction, don't forget to split it into three parts, as in problems 7 and 8.}
+    
+    
+    \item Argue that no two different Fermat numbers can share a prime factor. Since there are infinitely many Fermat numbers, there must thus be infinitely many primes.
+    
+\end{enumerate}
+
+
+
+\subsection*{\textbf{Solution:}}
+\begin{enumerate}[(a)]
+
+    \item
+  
+    
+    \item  
+    
+    
+    \item 
+    
+\end{enumerate}
+
+\end{document} 
