@@ -25,7 +25,7 @@ function mergedGeneratorHelper(
   arr1: number[],
   arr2: number[],
   getOutput: (iter1: Iterator<number>, iter2: Iterator<number>, expected_length: number) => number[],
-  expected: number[],
+  expected: number[]
 ) {
   const iterator1 = arr1[Symbol.iterator]();
   const iterator2 = arr2[Symbol.iterator]();
@@ -36,7 +36,7 @@ function mergedGeneratorHelper(
 function mergeIteratorsIntoGenerator(
   iterator1: Iterator<number>,
   iterator2: Iterator<number>,
-  expected_length: number,
+  expected_length: number
 ) {
   const merged_generator = mergedGenerator(iterator1, iterator2);
   return arrayFromIterator(merged_generator, expected_length);

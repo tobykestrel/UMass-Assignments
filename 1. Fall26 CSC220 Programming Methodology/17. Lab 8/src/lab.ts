@@ -30,4 +30,21 @@
 
 export function* mergedGenerator(it1: Iterator<number>, it2: Iterator<number>): Generator<number> {
   // TODO: Implement this generator.
+  let result1 = it1.next();
+  let result2 = it2.next();
+  while (!result1.done || !result2.done) {
+    if (result1.done) {
+      yield result2.value;
+      result2 = it2.next();
+    } else if (result2.done) {
+      yield result1.value;
+      result1 = it1.next();
+    } else if (result1.value <= result2.value) {
+      yield result1.value;
+      result1 = it1.next();
+    } else {
+      yield result2.value;
+      result2 = it2.next();
+    }
+  }
 }

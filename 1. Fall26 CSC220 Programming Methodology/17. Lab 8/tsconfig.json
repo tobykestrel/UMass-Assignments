@@ -4,13 +4,13 @@
     "lib": [
       "es2022"
     ],
+    "types": ["node", "jest"],
     "module": "es2022",
     "target": "es2022",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
     "exactOptionalPropertyTypes": true,
@@ -22,7 +22,7 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "importsNotUsedAsValues": "remove",
-    "outDir": "out/",
+    "outDir": "./out",
     "sourceMap": true,
     "allowJs": true
   },
