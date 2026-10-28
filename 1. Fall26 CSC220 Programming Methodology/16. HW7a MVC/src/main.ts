@@ -2,23 +2,31 @@ import { assert } from "./assert.js";
 import { agentFactory } from "./simulation_object/agent.js";
 import { Coordinate } from "./geometry.js";
 import { structureFactory } from "./simulation_object/structure.js";
+import { MainSimulationView } from "./view.js";
+import { Model } from "./model.js";
 
 function main() {
   const canvas = getCanvas();
 
   // TASK: Create an instance of MainSimulationView
   //       and attach it to the model.
+  const view = new MainSimulationView(canvas);
+  Model.getInstance().attach(view);
 
   const lobsters = createLobsters();
   // TASK: Add each lobster to the model.
+  for (const l of lobsters) Model.getInstance().addAgent(l);
 
   const house = structureFactory("house", "my-house", new Coordinate(0, 0));
   // TASK: Add the house to the model.
+  Model.getInstance().addStructure(house);
 
   setInterval(() => {
     // TASK: Call nextTick on the model here.
+    Model.getInstance().nextTick();
     canvas.getContext("2d")?.clearRect(0, 0, canvas.width, canvas.height);
     // TASK: Call draw on the view here.
+    view.draw();
   }, 100);
 }
 
@@ -34,13 +42,13 @@ function getCanvas() {
 // destinations, and speeds.
 function createLobsters() {
   // // Uncomment these simulation objects as you implement them.
-  // const lobst1 = agentFactory("simple_lobster", "lobster1", new Coordinate(300, 400));
-  // lobst1.startMoving(new Coordinate(750, 50), 10);
-  // const lobst2 = agentFactory("simple_lobster", "lobster2", new Coordinate(800, 450));
-  // const lobst3 = agentFactory("sleepy_lobster", "lobster3", new Coordinate(200, 300));
-  // lobst3.startMoving(new Coordinate(0, 250), 5);
+  const lobst1 = agentFactory("simple_lobster", "lobster1", new Coordinate(300, 400));
+  lobst1.startMoving(new Coordinate(750, 50), 10);
+  const lobst2 = agentFactory("simple_lobster", "lobster2", new Coordinate(800, 450));
+  const lobst3 = agentFactory("sleepy_lobster", "lobster3", new Coordinate(200, 300));
+  lobst3.startMoving(new Coordinate(0, 250), 5);
 
-  // return []; // Add the uncommented lobsters to this array
+  return [lobst1, lobst2, lobst3]; // Add the uncommented lobsters to this array
 }
 
 main();

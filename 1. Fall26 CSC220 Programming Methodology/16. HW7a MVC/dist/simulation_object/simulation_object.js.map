@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/simulation_object/simulation_object.ts"],
+  "sourcesContent": ["import { Coordinate } from \"../geometry.js\";\nimport type { Sprite } from \"../sprite.js\";\n\nexport abstract class SimulationObject {\n  constructor(public readonly id: string) {}\n\n  // Returns the current location of the simulation object\n  abstract getLocation(): Coordinate;\n\n  abstract getSprite(): Sprite;\n\n  // This method should be called on every simulation object\n  // each \"tick\" of the simulation.\n  abstract nextTick(): void;\n}\n"],
+  "mappings": ";;;AAGO,MAAe,mBAAf,MAAgC;AAAA,IACrC,YAA4B,IAAY;AAAZ;AAAA,IAAa;AAAA,EAU3C;",
+  "names": []
+}

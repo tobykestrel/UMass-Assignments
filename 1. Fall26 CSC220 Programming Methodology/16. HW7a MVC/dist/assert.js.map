@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/assert.ts"],
+  "sourcesContent": ["// https://blog.logrocket.com/assertion-functions-typescript/#:~:text=Assertion%20functions%20in%20TypeScript%20are,For%20example%2C%20Node.\nexport function assert(condition: unknown, msg?: string): asserts condition {\n  if (condition === false) {\n    throw new Error(msg);\n  }\n}\n"],
+  "mappings": ";;;AACO,WAAS,OAAO,WAAoB,KAAiC;AAC1E,QAAI,cAAc,OAAO;AACvB,YAAM,IAAI,MAAM,GAAG;AAAA,IACrB;AAAA,EACF;",
+  "names": []
+}

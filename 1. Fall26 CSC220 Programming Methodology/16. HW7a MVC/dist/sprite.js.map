@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/sprite.ts"],
+  "sourcesContent": ["// A \"sprite\" is an image used to display an\n// object or character on the screen.\n// We represent these as the filename of the image and\n// a number from [0-1] specifying the scale of the image\n// (i.e., whether it should be displayed smaller than\n// the actual image size).\nexport class Sprite {\n  constructor(\n    // As a workaround to avoid having to use async/await,\n    // we pre-load our images with html image tags.\n    // Specify the ID of the image tag as the imageID\n    // of the sprite.\n    public readonly imageID: string,\n    public readonly scale: number = 1\n  ) {}\n}\n"],
+  "mappings": ";;;AAMO,MAAM,SAAN,MAAa;AAAA,IAClB,YAKkB,SACA,QAAgB,GAChC;AAFgB;AACA;AAAA,IACf;AAAA,EACL;",
+  "names": []
+}

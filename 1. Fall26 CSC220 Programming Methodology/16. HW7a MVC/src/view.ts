@@ -1,19 +1,29 @@
-import { assert } from "./assert.js";
 import type { Coordinate } from "./geometry.js";
 import type { Sprite } from "./sprite.js";
 
 export abstract class View {
   // Do not alter or remove this declaration.
   abstract draw(): void;
+  abstract updateObject(id: string, location: Coordinate, sprite: Sprite): void;
+  abstract removeObject(id: string): void;
 }
 
-export class MainSimulationView {
+export class MainSimulationView extends View {
   // Map of object id to drawable object
   // Keep this map up to date when this view recieves updates
   // from the model.
   private drawableObjects = new Map<string, DrawableSimulationObject>();
 
   constructor(private canvas: HTMLCanvasElement) {
+    super();
+  }
+
+  updateObject(id: string, location: Coordinate, sprite: Sprite): void {
+    this.drawableObjects.set(id, new DrawableSimulationObject(id, location, sprite));
+  }
+
+  removeObject(id: string): void {
+    this.drawableObjects.delete(id);
   }
 
   // The draw method is provided for you.
