@@ -4,7 +4,7 @@ import type { Structure } from "./simulation_object/structure.js";
 import type { View } from "./view.js";
 
 export class Model {
-  private static instance: Model;
+  private static instance: Model | undefined;
   private agents: Map<string, Agent> = new Map();
   private structures: Map<string, Structure> = new Map();
   private views: Set<View> = new Set();
@@ -42,8 +42,9 @@ export class Model {
   // If no agent with that id exists, throws an Error with the message
   // `Agent "${id}" not found`
   getAgent(id: string): Agent {
-    if (!this.agents.has(id)) throw new Error(`Agent "${id}" not found`);
-    return this.agents.get(id)!;
+    const agent = this.agents.get(id);
+    if (!agent) throw new Error(`Agent "${id}" not found`);
+    return agent;
   }
 
   // Remove the agent with the specified id from the simulation.
@@ -69,8 +70,9 @@ export class Model {
   // If no structure with that id exists, throws an Error with the message
   // `Structure ${id} not found`
   getStructure(id: string): Structure {
-    if (!this.structures.has(id)) throw new Error(`Structure ${id} not found`);
-    return this.structures.get(id)!;
+    const structure = this.structures.get(id);
+    if (!structure) throw new Error(`Structure ${id} not found`);
+    return structure;
   }
 
   // Remove the structure with the specified id from the simulation.

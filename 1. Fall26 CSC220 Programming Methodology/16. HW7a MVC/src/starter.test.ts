@@ -11,8 +11,11 @@ import { MainSimulationView, View } from "./view.js";
 class TestView extends View {
   readonly updates: Array<{ id: string; location: Coordinate; sprite: Sprite }> = [];
   readonly removals: string[] = [];
+  drawCalls = 0;
 
-  draw(): void {}
+  draw(): void {
+    this.drawCalls += 1;
+  }
 
   updateObject(id: string, location: Coordinate, sprite: Sprite): void {
     this.updates.push({ id, location, sprite });
@@ -65,11 +68,11 @@ describe("Model", () => {
     structureIds.clear();
   });
 
-  test("getInstance returns the singleton", () => {
+  it("should return the singleton from getInstance", () => {
     expect(Model.getInstance()).toBe(model);
   });
 
-  test("adds agents and broadcasts their initial state", () => {
+  it("should add agents and broadcast their initial state", () => {
     const view = attachView();
     const agent = addAgent(agentFactory("simple_lobster", uniqueId("lobster"), new Coordinate(12, 34)));
 
@@ -77,7 +80,7 @@ describe("Model", () => {
     expect(view.updates).toEqual([{ id: agent.id, location: new Coordinate(12, 34), sprite: agent.getSprite() }]);
   });
 
-  test("rejects duplicate agents and reports missing agents", () => {
+  it("should reject duplicate agents and report missing agents", () => {
     const agent = addAgent(agentFactory("simple_lobster", uniqueId("lobster"), new Coordinate(0, 0)));
 
     expect(() => model.addAgent(agent)).toThrow(`Agent "${agent.id}" already exists`);
@@ -85,7 +88,7 @@ describe("Model", () => {
     expect(() => model.removeAgent(uniqueId("missing"))).toThrow(/Couldn't remove agent ".+": Not found/);
   });
 
-  test("adds structures and broadcasts their initial state", () => {
+  it("should add structures and broadcast their initial state", () => {
     const view = attachView();
     const structure = addStructure(structureFactory("house", uniqueId("house"), new Coordinate(56, 78)));
 
@@ -95,7 +98,7 @@ describe("Model", () => {
     ]);
   });
 
-  test("preserves the starter house-location check", () => {
+  it("should preserve the starter house-location check", () => {
     const location = new Coordinate(42, 42);
     const house = structureFactory("house", uniqueId("house"), location);
 
@@ -103,7 +106,7 @@ describe("Model", () => {
     addStructure(house);
   });
 
-  test("rejects duplicate structures and reports missing structures", () => {
+  it("should reject duplicate structures and report missing structures", () => {
     const structure = addStructure(structureFactory("house", uniqueId("house"), new Coordinate(0, 0)));
 
     expect(() => model.addStructure(structure)).toThrow(`Structure "${structure.id}" already exists`);
@@ -111,7 +114,7 @@ describe("Model", () => {
     expect(() => model.removeStructure(uniqueId("missing"))).toThrow(/Couldn't remove structure ".+": Not found/);
   });
 
-  test("broadcasts each object's state after advancing a tick", () => {
+  it("should broadcast each object's state after advancing a tick", () => {
     const view = attachView();
     const agent = addAgent(agentFactory("simple_lobster", uniqueId("lobster"), new Coordinate(0, 0)));
     const structure = addStructure(structureFactory("house", uniqueId("house"), new Coordinate(40, 50)));
@@ -130,7 +133,7 @@ describe("Model", () => {
     });
   });
 
-  test("attaching a view sends it existing agents and structures", () => {
+  it("should send existing agents and structures to an attached view", () => {
     const agent = addAgent(agentFactory("simple_lobster", uniqueId("lobster"), new Coordinate(1, 2)));
     const structure = addStructure(structureFactory("house", uniqueId("house"), new Coordinate(3, 4)));
 
@@ -139,7 +142,7 @@ describe("Model", () => {
     expect(view.updates.map(({ id }) => id)).toEqual([agent.id, structure.id]);
   });
 
-  test("removing objects notifies attached views", () => {
+  it("should notify attached views when removing objects", () => {
     const view = attachView();
     const agent = addAgent(agentFactory("simple_lobster", uniqueId("lobster"), new Coordinate(0, 0)));
     const structure = addStructure(structureFactory("house", uniqueId("house"), new Coordinate(0, 0)));
@@ -154,7 +157,7 @@ describe("Model", () => {
     expect(() => model.getStructure(structure.id)).toThrow(`Structure ${structure.id} not found`);
   });
 
-  test("detached views no longer receive object updates", () => {
+  it("should stop sending object updates to detached views", () => {
     const view = attachView();
     model.detach(view);
     views.delete(view);
@@ -168,13 +171,13 @@ describe("Model", () => {
     expect(view.removals).toHaveLength(0);
   });
 
-  test("ticks safely when the model has no objects", () => {
+  it("should tick safely when the model has no objects", () => {
     model.nextTick();
   });
 });
 
 describe("simulation object factories and behavior", () => {
-  test("creates the supported agent types with their initial location and sprite", () => {
+  it("should create supported agent types with their initial location and sprite", () => {
     const regular = agentFactory("simple_lobster", "regular", new Coordinate(10, 20));
     const sleepy = agentFactory("sleepy_lobster", "sleepy", new Coordinate(30, 40));
 
@@ -184,11 +187,11 @@ describe("simulation object factories and behavior", () => {
     expect(sleepy.getSprite()).toEqual({ imageID: "lobsterRegular", scale: 0.4 });
   });
 
-  test("rejects unsupported agent types", () => {
+  it("should reject unsupported agent types", () => {
     expect(() => agentFactory("unknown", "bad-agent", new Coordinate(0, 0))).toThrow("unsupported agent type: unknown");
   });
 
-  test("regular lobsters remain still until asked to move", () => {
+  it("should keep regular lobsters still until asked to move", () => {
     const lobster = agentFactory("simple_lobster", "still", new Coordinate(5, 6));
 
     lobster.nextTick();
@@ -196,7 +199,7 @@ describe("simulation object factories and behavior", () => {
     expect(lobster.getLocation()).toEqual(new Coordinate(5, 6));
   });
 
-  test("regular lobsters move toward a destination and stop there", () => {
+  it("should move regular lobsters toward a destination and stop there", () => {
     const lobster = agentFactory("simple_lobster", "moving", new Coordinate(0, 0));
     const destination = new Coordinate(5, 0);
     lobster.startMoving(destination, 2);
@@ -211,7 +214,7 @@ describe("simulation object factories and behavior", () => {
     expect(lobster.getLocation()).toBe(destination);
   });
 
-  test("sleepy lobsters switch to their sleeping sprite on arrival", () => {
+  it("should switch sleepy lobsters to their sleeping sprite on arrival", () => {
     const lobster = agentFactory("sleepy_lobster", "sleepy-mover", new Coordinate(0, 0));
     const destination = new Coordinate(3, 0);
     lobster.startMoving(destination, 2);
@@ -229,7 +232,7 @@ describe("simulation object factories and behavior", () => {
     expect(lobster.getLocation()).toBe(destination);
   });
 
-  test("sleepy lobsters remain still before they start moving", () => {
+  it("should keep sleepy lobsters still before they start moving", () => {
     const lobster = agentFactory("sleepy_lobster", "sleepy-still", new Coordinate(5, 6));
 
     lobster.nextTick();
@@ -238,7 +241,7 @@ describe("simulation object factories and behavior", () => {
     expect(lobster.getSprite()).toEqual({ imageID: "lobsterRegular", scale: 0.4 });
   });
 
-  test("creates houses and returns their location and sprite", () => {
+  it("should create houses and return their location and sprite", () => {
     const location = new Coordinate(7, 8);
     const house = structureFactory("house", "home", location);
 
@@ -248,7 +251,7 @@ describe("simulation object factories and behavior", () => {
     expect(house.getLocation()).toBe(location);
   });
 
-  test("rejects unsupported structure types", () => {
+  it("should reject unsupported structure types", () => {
     expect(() => structureFactory("unknown", "bad-house", new Coordinate(0, 0))).toThrow(
       "unsupported structure type: unknown"
     );
@@ -281,7 +284,7 @@ describe("MainSimulationView", () => {
     jest.restoreAllMocks();
   });
 
-  test("draws registered objects at integer coordinates and scaled dimensions", () => {
+  it("should draw registered objects at integer coordinates and scaled dimensions", () => {
     view.updateObject("object-1", new Coordinate(12.9, 20.7), new Sprite("testSprite", 0.5));
 
     view.draw();
@@ -290,7 +293,7 @@ describe("MainSimulationView", () => {
     expect(drawImage).toHaveBeenCalledWith(image, 12, 20, 50, 25);
   });
 
-  test("replacing an object updates its position and sprite scale", () => {
+  it("should update an object's position and sprite scale when replaced", () => {
     view.updateObject("object-1", new Coordinate(0, 0), new Sprite("testSprite"));
     view.updateObject("object-1", new Coordinate(31, 42), new Sprite("testSprite", 0.25));
 
@@ -300,7 +303,7 @@ describe("MainSimulationView", () => {
     expect(drawImage).toHaveBeenCalledWith(image, 31, 42, 25, 12);
   });
 
-  test("removed objects are no longer drawn", () => {
+  it("should stop drawing removed objects", () => {
     view.updateObject("object-1", new Coordinate(0, 0), new Sprite("testSprite"));
     view.removeObject("object-1");
 

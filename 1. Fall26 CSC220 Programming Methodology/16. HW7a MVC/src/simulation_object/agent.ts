@@ -41,7 +41,7 @@ export abstract class Agent extends SimulationObject {
     // This method should be called on every simulation object
     // each "tick" of the simulation.
     if (this.moving.isMoving) {
-      let lI = linearInterpolate(this.getLocation(), this.moving.movingTo, this.moving.moveSpeed);
+      const lI = linearInterpolate(this.getLocation(), this.moving.movingTo, this.moving.moveSpeed);
       this.coord = lI.newLocation;
       if (lI.reachedDestination) this.moving.isMoving = false;
     }
@@ -71,7 +71,7 @@ class SleepyLobster extends SimpleLobster {
     // This method should be called on every simulation object
     // each "tick" of the simulation.
     if (!this.sleeping && this.moving.isMoving) {
-      let lI = linearInterpolate(this.getLocation(), this.moving.movingTo, this.moving.moveSpeed);
+      const lI = linearInterpolate(this.getLocation(), this.moving.movingTo, this.moving.moveSpeed);
       this.coord = lI.newLocation;
       if (lI.reachedDestination) {
         this.moving.isMoving = false;
