@@ -15,11 +15,28 @@ const locations = ["LGRT", "CICS Building", "Worcester DC", "ILC", "Rec Center",
 // ###########################################################################
 // Fill up passwordParts with the password segments you receive from `searchClueAtLocation`
 const passwordParts = Array(locations.length).fill("");
+
+const promises: Promise<{part: string, index: number}>[] = [];
+for (let i = 0; i < locations.length; i++) {
+    promises.push(searchClueAtLocation(locations[i]));
+}
+Promise.allSettled(promises).then( (results) => {
+    for (const r of results) {
+      if (r.status === "fulfilled") {
+        passwordParts[r.value.index] = r.value.part;
+        console.log("Found: " + r.value.part);
+      } else { console.error("Failed: " + r.reason); }
+    }
+    const password = passwordParts.join("");
+    console.log("Password: " + password);
+    completeHunt(password);
+}).catch((e) => { console.error(e); });
+
 // ###########################################################################
 // #                             END OF YOUR CODE                            #
 // ###########################################################################
 
 // Once you've filled up passwordParts, you may find the three lines below helpful
-// const password = passwordParts.join("")
-// console.log(`Password: ${password}`)
-// completeHunt(password)
+// const password = passwordParts.join("");
+// console.log("Password: " + password);
+// completeHunt(password);
